@@ -1,18 +1,14 @@
 ﻿body
 {
-    
+    font-family:Calibri, Sans-Serif;
 }
 
 header-main
 {
-    border: 1 solid #000;
-}
-
-.menu
-{
-    font-size:14px;
-    height:38px;
+    position:fixed;
+    top:15px;
     width:800px;
+    z-index:3;
 }
 
 #navbar
@@ -25,18 +21,18 @@ header-main
     z-index:9999;
 }
 
-#header-main #navbar
+#navbar #menu
 {
     margin:0px;
     padding:0px;
 }
 
-#header-main #navbar li
+#navbar #menu li
 {
     display:inline;
 }
 
-#header-main #navbar li a
+#navbar #menu li a
 {
     background-image:url(../Images/Menu/navbar-bg.png);
     background-repeat:no-repeat;
@@ -44,32 +40,64 @@ header-main
     height:0px;
     overflow:hidden;
     padding-top:38px;
-    width:200px;
+    width:120px;
 }
 
-#header-main #navbar li #txtSearch
-{
-    border:0px;
-    color:#7f7f7f;
-    height:18px;
-    left:30px;
-    padding-top:2px;
-    position:relative;
-    top:-52px;
-    width:152px;
-    z-index:9999;
-}
-
-#navbar li a#Menu_Common1_lnkHome
+/*BUTTONS*/
+#navbar #menu li#nav-home a
 {
     background-position:0px 0px;
 }
 
-#navbar li a#Menu_Common1_lnkCategory
+#navbar #menu li#nav-category a
 {
     background-position:-120px 0px;
 }
-#navbar li a#Menu_Common1_lnkAccount
+
+#navbar #menu li#nav-account a
 {
     background-position:-240px 0px;
+}
+
+/*HOVER*/
+#navbar #menu li#nav-home a:hover {
+background-position:0px -39px;
+}
+#navbar #menu li#nav-category a:hover{
+background-position:-120px -39px;
+}
+#navbar #menu li#nav-account a:hover{
+background-position:-240px -39px;
+}
+
+/*CLICKED*/
+#navbar #menu li#nav-home a:active
+{
+    background-position:0px -78px;
+}
+
+#navbar #menu li#nav-category a:active
+{
+    background-position:-120px -78px;
+}
+
+#navbar #menu li#nav-account a:active
+{
+    background-position:-240px -78px;
+}
+
+/*PRESSED*/
+#navbar #menu li#nav-home a.on
+{
+    background-position:0px -117px;
+}
+
+#navbar #menu li#nav-category a.on
+{
+    background-position:-120px -117px;
+}
+
+#navbar #menu li#nav-account a.on
+{
+    background-position:-240px -117px;
 }

@@ -15,7 +15,7 @@
     <form id="form1" runat="server">
     <div id="header-main">
         <div id="navbar">
-            <uc1:Menu_Common ID="Menu_Common1" runat="server" />
+            <uc1:Menu_Common ID="MainMenu" runat="server" />
         </div>
     </div>
     <div>
