@@ -8,6 +8,13 @@ header-main
     border: 1 solid #000;
 }
 
+.menu
+{
+    font-size:14px;
+    height:38px;
+    width:800px;
+}
+
 #header-main #navbar
 {
     margin:0px;
