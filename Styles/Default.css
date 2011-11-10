@@ -1,0 +1,42 @@
+﻿body
+{
+    
+}
+
+header-main
+{
+    border: 1 solid #000;
+}
+
+#header-main #navbar
+{
+    margin:0px;
+    padding:0px;
+}
+
+#header-main #navbar li
+{
+    display:inline;
+}
+
+#header-main #navbar li a
+{
+    float:left;
+    height:0px;
+    overflow:hidden;
+    padding-top:38px;
+    width:200px;
+}
+
+#header-main #navbar li #txtSearch
+{
+    border:0px;
+    color:#7f7f7f;
+    height:18px;
+    left:30px;
+    padding-top:2px;
+    position:relative;
+    top:-52px;
+    width:152px;
+    z-index:9999;
+}
