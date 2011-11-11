@@ -12,7 +12,7 @@ SET ANSI_PADDING ON
 GO
 
 CREATE TABLE [dbo].[JDwebstore-User](
-	[UserID] [int] NOT NULL,
+	[UserID] [uniqueidentifier] NOT NULL,
 	[Usernane] [varchar](32) NOT NULL,
 	[Password] [varchar](64) NOT NULL,
 	[DateOfBirth] [date] NOT NULL,

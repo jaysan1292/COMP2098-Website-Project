@@ -6,22 +6,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="Styles/Default.css" rel="stylesheet" type="text/css" />
     <title></title>
+    <link href="Styles/Default.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div id="header-main">
-        <div id="navbar">
-            <uc1:Menu_Common ID="MainMenu" runat="server" />
+        <div id="header-main">
+            <div id="navbar">
+                <uc1:Menu_Common ID="MainMenu" runat="server" />
+            </div>
         </div>
-    </div>
-    <div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
+        <div id="content">
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="footer">
+            <hr style="width:50%; color:#F0F0F0; border:1px solid;" />
+            Jason Recillo - 100726948 - Section B<br />COMP 2098: Intermediate Internet Programming | 2011 Fall Term | Submitted to: Tom Yeung
+        </div>
     </form>
 </body>
 </html>
