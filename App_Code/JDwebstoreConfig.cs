@@ -15,10 +15,49 @@ public class JDwebstoreConfig
     // Caches the data provider name
     private static string dbProviderName;
 
+    // Store the number of items per page
+    private readonly static int productsPerPage;
+
+    // Store the product description length for product lists
+    private readonly static int productDescriptionLength;
+
+    // Store the name of your shop
+    private readonly static string siteName;
+
     static JDwebstoreConfig()
     {
         dbConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         dbProviderName = ConfigurationManager.ConnectionStrings["ConnectionString"].ProviderName;
+        productsPerPage = System.Int32.Parse(ConfigurationManager.AppSettings["ItemsPerPage"]);
+        productDescriptionLength = System.Int32.Parse(ConfigurationManager.AppSettings["ItemDescriptionLength"]);
+        siteName = ConfigurationManager.AppSettings["SiteName"];
+    }
+
+    // Returns the maximum number of products to be displated on a page
+    public static int ItemsPerPage
+    {
+        get
+        {
+            return productsPerPage;
+        }
+    }
+
+    // Returns the legnth of product descriptions in items list
+    public static int ItemDescriptionLength
+    {
+        get
+        {
+            return ItemDescriptionLength;
+        }
+    }
+
+    // Returns the shop name
+    public static string SiteName
+    {
+        get
+        {
+            return siteName;
+        }
     }
 
     // Returns the connection string for the database

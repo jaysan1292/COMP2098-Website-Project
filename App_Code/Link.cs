@@ -40,4 +40,10 @@ public class Link
         return ToCategory(categoryId, "1");
     }
 
+    public static string ToProductImage(string fileName)
+    {
+        // build item URL
+        return BuildAbsolute("/Images/ItemImages/" + fileName);
+    }
+
 }
