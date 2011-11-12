@@ -23,5 +23,8 @@ public partial class UserControls_WebUserControl : System.Web.UI.UserControl
             lnkCategory.CssClass = "";
             lnkHome.CssClass = "";
         }
+
+        this.txtSearch.Attributes.Add("onClick", "searchFocus(this)");
+        this.txtSearch.Attributes.Add("onBlur", "searchBlur(this)");
     }
 }
