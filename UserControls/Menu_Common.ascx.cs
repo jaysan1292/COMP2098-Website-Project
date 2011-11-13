@@ -26,12 +26,13 @@ public partial class UserControls_WebUserControl : System.Web.UI.UserControl
 
         this.txtSearch.Attributes.Add("onClick", "searchFocus(this)");
         this.txtSearch.Attributes.Add("onBlur", "searchBlur(this)");
+        this.btnSearch.Attributes.Add("onClick", "checkSearch()");
     }
     protected void btnSearch_Click(object sender, ImageClickEventArgs e)
     {
-        if (!IsPostBack)
-        {
-            
-        }
+        if(lstCategories.SelectedItem.ToString()=="All Categories")
+            Response.Redirect("Search.aspx" + "?q=" + HttpUtility.UrlPathEncode(txtSearch.Text));
+        else
+            Response.Redirect("Search.aspx" + "?q=" + HttpUtility.UrlPathEncode(txtSearch.Text) + "&CategoryID=" + lstCategories.SelectedIndex);
     }
 }
