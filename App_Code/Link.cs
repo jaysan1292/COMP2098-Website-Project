@@ -46,4 +46,8 @@ public class Link
         return BuildAbsolute("/Images/ItemImages/" + fileName);
     }
 
+    public static string ToSearchResult(string query)
+    {
+        return BuildAbsolute(String.Format("Search.aspx?q={0}", query));
+    }
 }

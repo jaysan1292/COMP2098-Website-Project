@@ -22,7 +22,8 @@
     <li id="nav-search">
         <form action="../Search.aspx">
             <span>
-                <asp:ImageButton ID="btnSearch" runat="server" CssClass="search-L" ImageUrl="~/Images/Menu/search_01.png"/>
+                <asp:ImageButton ID="btnSearch" runat="server" CssClass="search-L" 
+                ImageUrl="~/Images/Menu/search_01.png" onclick="btnSearch_Click"/>
                 <asp:TextBox ID="txtSearch" runat="server" CssClass="searchbox">Search</asp:TextBox>
                 <asp:DropDownList ID="DropDownList1" runat="server" CssClass="searchbox-dd" 
                 DataSourceID="SqlDataSource1" DataTextField="Name" DataValueField="Name">
