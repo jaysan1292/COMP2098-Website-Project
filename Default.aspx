@@ -9,10 +9,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div id="spotlight">
+   <%-- <div id="spotlight">
         <asp:Panel ID="Panel1" runat="server" Height="350px" Width="800px">
         </asp:Panel>
-    </div>
+    </div>--%>
     <div id="content-left">
         <uc2:CategoryList ID="CategoryList1" runat="server" />
     </div>
