@@ -16,10 +16,10 @@ public class JDwebstoreConfig
     private static string dbProviderName;
 
     // Store the number of items per page
-    private readonly static int productsPerPage;
+    private readonly static int itemsPerPage;
 
     // Store the product description length for product lists
-    private readonly static int productDescriptionLength;
+    private readonly static int itemDescriptionLength;
 
     // Store the name of your shop
     private readonly static string siteName;
@@ -28,8 +28,8 @@ public class JDwebstoreConfig
     {
         dbConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         dbProviderName = ConfigurationManager.ConnectionStrings["ConnectionString"].ProviderName;
-        productsPerPage = System.Int32.Parse(ConfigurationManager.AppSettings["ItemsPerPage"]);
-        productDescriptionLength = System.Int32.Parse(ConfigurationManager.AppSettings["ItemDescriptionLength"]);
+        itemsPerPage = System.Int32.Parse(ConfigurationManager.AppSettings["ItemsPerPage"]);
+        itemDescriptionLength = System.Int32.Parse(ConfigurationManager.AppSettings["ItemDescriptionLength"]);
         siteName = ConfigurationManager.AppSettings["SiteName"];
     }
 
@@ -38,7 +38,7 @@ public class JDwebstoreConfig
     {
         get
         {
-            return productsPerPage;
+            return itemsPerPage;
         }
     }
 
@@ -47,7 +47,7 @@ public class JDwebstoreConfig
     {
         get
         {
-            return ItemDescriptionLength;
+            return itemDescriptionLength;
         }
     }
 

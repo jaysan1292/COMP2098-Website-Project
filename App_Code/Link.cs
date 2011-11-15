@@ -40,7 +40,12 @@ public class Link
         return ToCategory(categoryId, "1");
     }
 
-    public static string ToProductImage(string fileName)
+    public static string ToItem(string itemId)
+    {
+        return BuildAbsolute(String.Format("Item.aspx?ItemID={0}", itemId));
+    }
+
+    public static string ToItemImage(string fileName)
     {
         // build item URL
         return BuildAbsolute("/Images/ItemImages/" + fileName);

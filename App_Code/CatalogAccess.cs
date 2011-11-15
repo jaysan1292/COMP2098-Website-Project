@@ -98,13 +98,13 @@ public class CatalogAccess
     }
 
     // retrieve the list of items in a category
-    public static DataTable GetItemsInCategory(string categoryId, string pageNumber, out int howManyPages)
+    public static DataTable GetItemsInCategory(string categoryId, string pageNumber, out int totalPages)
     {
         // get a configured DbCommand object
         DbCommand comm = GenericDataAccess.CreateCommand();
         
         // set the stored procedure name
-        comm.CommandText = "CatalogGetItemsInCategory";
+        comm.CommandText = "JDwebstore-CatalogGetItemsInCategory";
         
         // create a new parameter
         DbParameter param = comm.CreateParameter();
@@ -147,13 +147,60 @@ public class CatalogAccess
         // calculate how many pages of items and set the out parameter
         int howManyItems = Int32.Parse
         (comm.Parameters["@HowManyItems"].Value.ToString());
-        howManyPages = (int)Math.Ceiling((double)howManyItems /
+        totalPages = (int)Math.Ceiling((double)howManyItems /
         (double)JDwebstoreConfig.ItemsPerPage);
         
         // return the page of items
         return table;
     }
 
+    // Retrieve the list of products on catalog promotion
+    public static DataTable GetItemsOnFront(string pageNumber, out int totalPages)
+    {
+        // get a configured DbCommand object
+        DbCommand comm = GenericDataAccess.CreateCommand();
+
+        // set the stored procedure name
+        comm.CommandText = "JDwebstore-CatalogGetItemsOnFrontpage";
+
+        // create a new parameter
+        DbParameter param = comm.CreateParameter();
+        param.ParameterName = "@DescriptionLength";
+        param.Value = JDwebstoreConfig.ItemDescriptionLength;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        // create a new parameter
+        param = comm.CreateParameter();
+        param.ParameterName = "@PageNumber";
+        param.Value = pageNumber;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        // create a new parameter
+        param = comm.CreateParameter();
+        param.ParameterName = "@ItemsPerPage";
+        param.Value = JDwebstoreConfig.ItemsPerPage;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        // create a new parameter
+        param = comm.CreateParameter();
+        param.ParameterName = "@HowManyItems";
+        param.Direction = ParameterDirection.Output;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        // execute the stored procedure and save the results in a DataTable
+        DataTable table = GenericDataAccess.ExecuteSelectCommand(comm);
+        
+        // calculate how many pages of products and set the out parameter
+        int totalItems = Int32.Parse(comm.Parameters["@HowManyItems"].Value.ToString());
+        totalPages=(int)Math.Ceiling((double)totalItems / (double)JDwebstoreConfig.ItemsPerPage);
+
+        // return the page of items
+        return table;
+    }
 }
 
 public struct CategoryDetails
