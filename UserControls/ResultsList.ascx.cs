@@ -15,14 +15,16 @@ public partial class UserControls_ResultsList : System.Web.UI.UserControl
 
     private void PopulateControls()
     {
+        // Retrieve CategoryID from the query string
+        string categoryId = Request.QueryString["CategoryID"];
+
         // Retrieve Page from the query string
         string page = Request.QueryString["Page"];
 
-        // Retrieve search query from query string
+        // Retrieve search string from query string
         string query = Request.QueryString["q"];
 
         if (page == null) page = "1";
-
         // How many pages of products?
         int totalPages = 1;
 
@@ -30,10 +32,50 @@ public partial class UserControls_ResultsList : System.Web.UI.UserControl
         string firstPageUrl = "";
         string pagerFormat = "";
 
-        // Retrieve list of items
-        lstResults.DataSource = CatalogAccess.SearchCatalog(query, page, out totalPages);
-        lstResults.DataBind();
+        // If performing a product search
+        if (query != null)
+        {
+            // Perform search
+            lstResults.DataSource = CatalogAccess.SearchCatalog(query, page, out totalPages);
+            lstResults.DataBind();
 
-        //firstPageUrl=Link.to
+            // Display pager
+            firstPageUrl = Link.ToSearch(query, "1");
+            pagerFormat = Link.ToSearch(query, "{0}");
+        }
+
+        // If browsing a category..
+        if (categoryId != null)
+        {
+            // Retrieve list of products in a category
+            lstResults.DataSource = CatalogAccess.GetItemsInCategory(categoryId, page, out totalPages);
+            lstResults.DataBind();
+
+            // get first page url and pager format
+            firstPageUrl = Link.ToCategory(categoryId, "1");
+            pagerFormat = Link.ToCategory(categoryId, "{0}");
+        }
+        else if (categoryId != null)
+        {
+            // Retrieve list of products 
+            lstResults.DataSource = CatalogAccess.GetItemsInCategory(categoryId, page, out totalPages);
+            lstResults.DataBind();
+            // get first page url and pager format
+            firstPageUrl = Link.ToCategory(categoryId, "1");
+            pagerFormat = Link.ToCategory(categoryId, "{0}");
+        }
+        else
+        {
+            // Retrieve list of products on catalog promotion
+            lstResults.DataSource = CatalogAccess.GetItemsOnFront(page, out totalPages);
+            lstResults.DataBind();
+
+            // have the current page as integer
+            int currentPage = Int32.Parse(page);
+        }
+
+        // Display pager controls
+        PagerTop.Show(int.Parse(page), totalPages, firstPageUrl, pagerFormat, false);
+        PagerBottom.Show(int.Parse(page), totalPages, firstPageUrl, pagerFormat, true);
     }
 }

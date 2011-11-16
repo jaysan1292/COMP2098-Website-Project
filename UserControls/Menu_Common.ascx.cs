@@ -27,6 +27,11 @@ public partial class UserControls_WebUserControl : System.Web.UI.UserControl
         this.txtSearch.Attributes.Add("onClick", "searchFocus(this)");
         this.txtSearch.Attributes.Add("onBlur", "searchBlur(this)");
         this.btnSearch.Attributes.Add("onClick", "checkSearch()");
+
+        if (!IsPostBack)
+        {
+            if (Request.QueryString["q"] != null) txtSearch.Text = Request.QueryString["q"].ToString();
+        }
     }
     protected void btnSearch_Click(object sender, ImageClickEventArgs e)
     {

@@ -213,20 +213,42 @@
 
 #itemcontainer
 {
-    height:110px;
-    width:100%;
-    padding:0px;
-    margin:0px;
+    height: 110px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
 }
 
 #itemimage
 {
-    float:left;
-    width:110px;
+    float: left;
+    width: 110px;
 }
 
 #iteminfo
 {
-    float:right;
-    width:590px;
+    float: right;
+    width: 590px;
 }
+
+/*SEARCHRESULTS*/
+li.match
+{
+    list-style: none;
+    padding: 20px 16px 22px 112px;
+    border-top: solid #EFEFEF 1px;
+    background-repeat: no-repeat;
+    background-position: 6px 50%;
+    color: #333;
+}
+li.match .product-image
+{
+    float: left;
+    width: 377px;
+    margin-right: -168px;
+}
+li.match .product-image{float:left;width:100px;margin-left:-100px;margin-right:10px;}
+li.match .product-info{float:left;width:377px;margin-right:-168px;}
+li.match .product-info .h4{font-size:12px;font-weight:bold;margin-bottom:7px;}
+li.match .product-info .product-description{}
+li.match .product-price{float:right;width:0px;position:relative;left:300px;}

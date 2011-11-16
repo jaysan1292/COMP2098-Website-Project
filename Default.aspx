@@ -1,15 +1,14 @@
-﻿<%@ Page Title="JDwebstore - Home" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="JDwebstore - Home" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
+    CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
-<%@ Register src="UserControls/Menu_Common.ascx" tagname="Menu_Common" tagprefix="uc1" %>
-
-<%@ Register src="UserControls/CategoryList.ascx" tagname="CategoryList" tagprefix="uc2" %>
-
-<%@ Register src="UserControls/ItemList.ascx" tagname="ItemList" tagprefix="uc3" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<%@ Register Src="UserControls/Menu_Common.ascx" TagName="Menu_Common" TagPrefix="uc1" %>
+<%@ Register Src="UserControls/CategoryList.ascx" TagName="CategoryList" TagPrefix="uc2" %>
+<%@ Register Src="UserControls/ItemList.ascx" TagName="ItemList" TagPrefix="uc1" %>
+<%@ Register Src="UserControls/ResultsList.ascx" TagName="ResultsList" TagPrefix="uc2" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-   <%-- <div id="spotlight">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <%--<div id="spotlight">
         <asp:Panel ID="Panel1" runat="server" Height="350px" Width="800px">
         </asp:Panel>
     </div>--%>
@@ -17,7 +16,6 @@
         <uc2:CategoryList ID="CategoryList1" runat="server" />
     </div>
     <div id="content-right">
-        <uc3:ItemList ID="ItemList1" runat="server" />
-</div>
+        <uc1:ItemList ID="ItemList1" runat="server" />
+    </div>
 </asp:Content>
-
