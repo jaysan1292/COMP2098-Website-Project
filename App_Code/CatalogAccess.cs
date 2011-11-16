@@ -102,54 +102,54 @@ public class CatalogAccess
     {
         // get a configured DbCommand object
         DbCommand comm = GenericDataAccess.CreateCommand();
-        
+
         // set the stored procedure name
         comm.CommandText = "JDwebstore-CatalogGetItemsInCategory";
-        
+
         // create a new parameter
         DbParameter param = comm.CreateParameter();
         param.ParameterName = "@CategoryID";
         param.Value = categoryId;
         param.DbType = DbType.Int32;
         comm.Parameters.Add(param);
-        
+
         // create a new parameter
         param = comm.CreateParameter();
         param.ParameterName = "@DescriptionLength";
         param.Value = JDwebstoreConfig.ItemDescriptionLength;
         param.DbType = DbType.Int32;
         comm.Parameters.Add(param);
-        
+
         // create a new parameter
         param = comm.CreateParameter();
         param.ParameterName = "@PageNumber";
         param.Value = pageNumber;
         param.DbType = DbType.Int32;
         comm.Parameters.Add(param);
-        
+
         // create a new parameter
         param = comm.CreateParameter();
         param.ParameterName = "@ItemsPerPage";
         param.Value = JDwebstoreConfig.ItemsPerPage;
         param.DbType = DbType.Int32;
         comm.Parameters.Add(param);
-        
+
         // create a new parameter
         param = comm.CreateParameter();
         param.ParameterName = "@HowManyItems";
         param.Direction = ParameterDirection.Output;
         param.DbType = DbType.Int32;
         comm.Parameters.Add(param);
-        
+
         // execute the stored procedure and save the results in a DataTable
         DataTable table = GenericDataAccess.ExecuteSelectCommand(comm);
-        
+
         // calculate how many pages of items and set the out parameter
         int howManyItems = Int32.Parse
         (comm.Parameters["@HowManyItems"].Value.ToString());
         totalPages = (int)Math.Ceiling((double)howManyItems /
         (double)JDwebstoreConfig.ItemsPerPage);
-        
+
         // return the page of items
         return table;
     }
@@ -193,12 +193,57 @@ public class CatalogAccess
 
         // execute the stored procedure and save the results in a DataTable
         DataTable table = GenericDataAccess.ExecuteSelectCommand(comm);
-        
+
         // calculate how many pages of products and set the out parameter
         int totalItems = Int32.Parse(comm.Parameters["@HowManyItems"].Value.ToString());
-        totalPages=(int)Math.Ceiling((double)totalItems / (double)JDwebstoreConfig.ItemsPerPage);
+        totalPages = (int)Math.Ceiling((double)totalItems / (double)JDwebstoreConfig.ItemsPerPage);
 
         // return the page of items
+        return table;
+    }
+
+    // Searches the catalog
+    public static DataTable SearchCatalog(string query, string pageNumber, out int totalPages)
+    {
+        DbCommand comm = GenericDataAccess.CreateCommand();
+
+        comm.CommandText = "JDwebstore-SearchItems";
+
+        DbParameter param = comm.CreateParameter();
+        param.ParameterName = "@uQuery";
+        param.Value = query;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@DescriptionLength";
+        param.Value = JDwebstoreConfig.ItemDescriptionLength;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@PageNumber";
+        param.Value = pageNumber;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@ItemsPerPage";
+        param.Value = JDwebstoreConfig.ItemsPerPage;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@HowManyItems";
+        param.Direction = ParameterDirection.Output;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+       
+        DataTable table = GenericDataAccess.ExecuteSelectCommand(comm);
+
+        int howManyItems=Int32.Parse(comm.Parameters["@HowManyItems"].Value.ToString());
+        totalPages=(int)Math.Ceiling((double)howManyItems/(double)JDwebstoreConfig.ItemsPerPage);
+
         return table;
     }
 }

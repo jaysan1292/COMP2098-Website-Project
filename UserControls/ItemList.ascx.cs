@@ -20,6 +20,9 @@ public partial class UserControls_ItemList : System.Web.UI.UserControl
         // Retrieve Page from the query string
         string page = Request.QueryString["Page"];
 
+        // Retrieve search string from query string
+        string query = Request.QueryString["q"];
+
         if (page == null) page = "1";
         // How many pages of products?
         int totalPages = 1;
@@ -28,7 +31,19 @@ public partial class UserControls_ItemList : System.Web.UI.UserControl
         string firstPageUrl = "";
         string pagerFormat = "";
 
-        //if browsing a category..
+        // If performing a product search
+        if (query != null)
+        {
+            // Perform search
+            lstItems.DataSource = CatalogAccess.SearchCatalog(query, page, out totalPages);
+            lstItems.DataBind();
+
+            // Display pager
+            firstPageUrl = Link.ToSearch(query, "1");
+            pagerFormat = Link.ToSearch(query, "{0}");
+        }
+
+        // If browsing a category..
         if (categoryId != null)
         {
             // Retrieve list of products in a category
