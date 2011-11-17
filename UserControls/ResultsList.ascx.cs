@@ -10,14 +10,11 @@ public partial class UserControls_ResultsList : System.Web.UI.UserControl
     protected void Page_Load(object sender, EventArgs e)
     {
         PopulateControls();
-        
+
     }
 
     private void PopulateControls()
     {
-        // Retrieve CategoryID from the query string
-        string categoryId = Request.QueryString["CategoryID"];
-
         // Retrieve Page from the query string
         string page = Request.QueryString["Page"];
 
@@ -32,47 +29,16 @@ public partial class UserControls_ResultsList : System.Web.UI.UserControl
         string firstPageUrl = "";
         string pagerFormat = "";
 
-        // If performing a product search
-        if (query != null)
-        {
-            // Perform search
-            lstResults.DataSource = CatalogAccess.SearchCatalog(query, page, out totalPages);
-            lstResults.DataBind();
+        // Perform search
+        lstResults.DataSource = CatalogAccess.SearchCatalog(query, page, out totalPages);
+        lstResults.DataBind();
 
-            // Display pager
-            firstPageUrl = Link.ToSearch(query, "1");
-            pagerFormat = Link.ToSearch(query, "{0}");
-        }
+        // Display pager
+        firstPageUrl = Link.ToSearch(query, "1");
+        pagerFormat = Link.ToSearch(query, "{0}");
 
-        // If browsing a category..
-        if (categoryId != null)
-        {
-            // Retrieve list of products in a category
-            lstResults.DataSource = CatalogAccess.GetItemsInCategory(categoryId, page, out totalPages);
-            lstResults.DataBind();
-
-            // get first page url and pager format
-            firstPageUrl = Link.ToCategory(categoryId, "1");
-            pagerFormat = Link.ToCategory(categoryId, "{0}");
-        }
-        else if (categoryId != null)
-        {
-            // Retrieve list of products 
-            lstResults.DataSource = CatalogAccess.GetItemsInCategory(categoryId, page, out totalPages);
-            lstResults.DataBind();
-            // get first page url and pager format
-            firstPageUrl = Link.ToCategory(categoryId, "1");
-            pagerFormat = Link.ToCategory(categoryId, "{0}");
-        }
-        else
-        {
-            // Retrieve list of products on catalog promotion
-            lstResults.DataSource = CatalogAccess.GetItemsOnFront(page, out totalPages);
-            lstResults.DataBind();
-
-            // have the current page as integer
-            int currentPage = Int32.Parse(page);
-        }
+        // have the current page as integer
+        int currentPage = Int32.Parse(page);
 
         // Display pager controls
         PagerTop.Show(int.Parse(page), totalPages, firstPageUrl, pagerFormat, false);
