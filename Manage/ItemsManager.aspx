@@ -1,13 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeFile="ItemsManager.aspx.cs" Inherits="Manage_ItemsManager" %>
+﻿<%@ Page Title="Store Management Interface" Language="C#" MasterPageFile="~/Main.master"
+    AutoEventWireup="true" CodeFile="ItemsManager.aspx.cs" Inherits="Manage_ItemsManager" %>
 
 <%@ Register Src="../UserControls/Pager.ascx" TagName="Pager" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-
-<%-- TO DO: ADD SUPPORT FOR PRODUCT CATEGORIES --%>
-
+    <%-- TO DO: ADD SUPPORT FOR PRODUCT CATEGORIES --%>
     <uc1:Pager ID="PagerTop" runat="server" Visible="False" />
     <asp:DataList ID="DataList1" runat="server" DataSourceID="ItemManagerSource">
         <ItemTemplate>
@@ -24,7 +22,7 @@
                     </h4>
                     <p class="product-description">
                         <%# Eval("Description") %>
-                        <a href="<%# Link.ToItem(Eval("ItemID").ToString()) %>">Details &gt;&gt;</a></p>
+                    </p>
                 </div>
                 <div class="product-price">
                     <h4>

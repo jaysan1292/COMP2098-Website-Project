@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
+﻿<%@ Page Title="Store Management Interface" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
     CodeFile="Edit.aspx.cs" Inherits="Manage_Edit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
