@@ -26,6 +26,5 @@ public partial class Main : System.Web.UI.MasterPage
     public void SetCurrentPage(string page)
     {
         CurrentPage = page;
-
     }
 }
