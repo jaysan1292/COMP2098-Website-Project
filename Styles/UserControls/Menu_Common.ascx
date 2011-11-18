@@ -43,7 +43,7 @@
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [Name] FROM [JDwebstore-Category]">
             </asp:SqlDataSource>
-                <asp:Image ID="Image1" runat="server" CssClass="search-R" ImageUrl="./Images/Menu/search_02.png"/>
+                <asp:Image ID="Image1" runat="server" CssClass="search-R" ImageUrl="|ApplicationPath|/Images/Menu/search_02.png"/>
             </span>
         </form>
     </li>
