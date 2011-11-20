@@ -285,5 +285,47 @@ li.match .product-price
 
 .ItemManagerTable
 {
-    border:0px;
+    border: 0px;
+}
+
+.itemList
+{
+    height: 450px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.itemList table
+{
+    width: 100%;
+}
+
+.manageList
+{
+    border:1px;
+}
+.manageList .itemform tr td input, .manageList .itemform tr td textarea
+{
+    font-family: Calibri, Sans-Serif;
+    font-size: 15px;
+}
+
+.manageList .iteminfo tr td input
+{
+    width: 600px;
+}
+
+.manageList .iteminfo tr td textarea
+{
+    width: 598px;
+}
+
+.manageList a.itemlink
+{
+    color: #000;
+    text-decoration: none;
+}
+.manageList .iteminfo tr td .checkbox
+{
+    position:relative;
+    right:297px;
 }
