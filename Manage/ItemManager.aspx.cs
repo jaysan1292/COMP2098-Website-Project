@@ -27,4 +27,8 @@ public partial class Manage_ItemManager : System.Web.UI.Page {
         control.Attributes.Add("onmouseover", "document.getElementById('" + id + "').style.display='block'");
         control.Attributes.Add("onmouseout", "document.getElementById('" + id + "').style.display='none'");
     }
+    protected void lstItems_ItemCreated(object sender, DataListItemEventArgs e) {
+        //string command = "resetItemValues('" + lstItems.index + "');
+        //btnCancel.Attributes.Add("onclick",command);
+    }
 }

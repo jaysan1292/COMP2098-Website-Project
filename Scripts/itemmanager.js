@@ -1,6 +1,8 @@
 ﻿function showLightbox() {
     document.getElementById('addItem').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
+
+    document.getElemenyById('ContentPlaceHolder1_txtName').focus; // FIX THIS LINE
 }
 
 function hideLightbox() {
@@ -9,4 +11,12 @@ function hideLightbox() {
         document.getElementById('fade').style.display = 'none';
         addForm.reset();
     }
+}
+
+function resetItemValues(id) {
+    var divId = id - 1;
+    var divName = 'ContentPlaceHolder1_lstItems_';
+
+    document.getElementById(divName + 'txtName' + divId).value = document.getElementById(divName + 'hidName' + 0).value;
+
 }

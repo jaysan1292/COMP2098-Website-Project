@@ -18,18 +18,25 @@
         Name
     </div>
     <div class="itemList">
-        <asp:DataList ID="lstItems" runat="server" DataSourceID="ItemDataSource">
+        <asp:DataList ID="lstItems" runat="server" DataSourceID="ItemDataSource" 
+            onitemcreated="lstItems_ItemCreated">
             <AlternatingItemStyle BackColor="#F3F3F3" />
             <ItemTemplate>
                 <!-- Original Values -->
-                <asp:HiddenField ID="hidName" runat="server" Value='<%# Eval("Name") %>'/>
-                <asp:HiddenField ID="hidDescription" runat="server" Value='<%# Eval("Description") %>'/>
-                <asp:HiddenField ID="hidPrice" runat="server" Value='<%# Eval("Price","{0:c}") %>'/>
-                <asp:HiddenField ID="hidKeywords" runat="server" Value='<%# Eval("Keywords") %>'/>
-                <asp:HiddenField ID="hidImage" runat="server" Value='<%# Eval("Image") %>'/>
-                <asp:HiddenField ID="hidCategory" runat="server" Value='<%# Eval("CategoryID") %>'/>
-                <asp:HiddenField ID="hidOnFront" runat="server" Value='<%# Eval("OnFront") %>'/>
-                <asp:HiddenField ID="hidOnSlides" runat="server" Value='<%# Eval("OnSlides") %>'/>
+                <asp:HiddenField ID="hidItemID" runat="server" Value='<%# Eval("ItemID") %>' ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidName" runat="server" Value='<%# Eval("Name") %>' ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidDescription" runat="server" Value='<%# Eval("Description") %>'
+                    ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidPrice" runat="server" Value='<%# Eval("Price","{0:c}") %>'
+                    ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidKeywords" runat="server" Value='<%# Eval("Keywords") %>'
+                    ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidImage" runat="server" Value='<%# Eval("Image") %>' ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidCategory" runat="server" Value='<%# Eval("CategoryID") %>'
+                    ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidOnFront" runat="server" Value='<%# Eval("OnFront") %>' ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidOnSlides" runat="server" Value='<%# Eval("OnSlides") %>'
+                    ClientIDMode="Predictable" />
                 <!-- End Original Values -->
                 <div class="manageList">
                     <div class="itemheader" style="width: 764px;" onmousedown="toggleSlide('<%# Eval("ItemID") %>');">
@@ -44,13 +51,14 @@
                         height: 285px; background: #FFF; border: 1px #F5F5F5;">
                         <hr style="width: 75%;" />
                         <%-- ITEM INFORMATION GOES HERE --%>
+                        <form action="">
                         <table class="itemform" cellspacing="1" style="border-collapse: collapse;">
                             <tr>
                                 <td style="width: 150px;">
                                     Name:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="txtName" runat="server" Text='<%# Eval("Name") %>' ClientIDMode="Static"
+                                    <asp:TextBox ID="txtName" runat="server" Text='<%# Eval("Name") %>' ClientIDMode="Predictable"
                                         ValidationGroup='VG<%# Eval("ItemID") %>'></asp:TextBox>
                                 </td>
                             </tr>
@@ -60,7 +68,7 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtDescription" runat="server" Height="75px" Text='<%# Eval("Description") %>'
-                                        TextMode="MultiLine" ValidationGroup='VG<%# Eval("ItemID") %>'></asp:TextBox>
+                                        TextMode="MultiLine" ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -68,7 +76,8 @@
                                     Keywords:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("Keywords") %>' ValidationGroup='VG<%# Eval("ItemID") %>'></asp:TextBox>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("Keywords") %>' ValidationGroup='VG<%# Eval("ItemID") %>'
+                                        ClientIDMode="Predictable"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -77,7 +86,7 @@
                                 </td>
                                 <td>
                                     <asp:TextBox ID="txtPrice" runat="server" Width="150px" Text='<%# Eval("Price", "{0:c}") %>'
-                                        ValidationGroup='VG<%# Eval("ItemID") %>'></asp:TextBox>
+                                        ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -103,7 +112,7 @@
                                 </td>
                                 <td style="text-align: left;">
                                     <asp:CheckBox ID="chkOnFront" runat="server" CssClass="checkbox" Checked='<%# Eval("OnFront") %>'
-                                        ValidationGroup='VG<%# Eval("ItemID") %>' />
+                                        ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable" />
                                 </td>
                             </tr>
                             <tr>
@@ -112,10 +121,11 @@
                                 </td>
                                 <td align="left">
                                     <asp:CheckBox ID="chkOnSlides" runat="server" CssClass="checkbox" Checked='<%# Eval("OnSlides") %>'
-                                        ValidationGroup='VG<%# Eval("ItemID") %>' />
+                                        ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable" />
                                 </td>
                             </tr>
                         </table>
+                        </form>
                         <div style="float: right; position: relative; bottom: 93px; right: 30px;">
                             Image:
                             <img src='../Images/ItemImages/<%# Eval("Thumbnail") %>' alt="" style="width: 100px;
