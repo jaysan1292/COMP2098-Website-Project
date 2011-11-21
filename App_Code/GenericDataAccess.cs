@@ -9,14 +9,12 @@ using System.Data.Common;
 /// Class contains generic data access functionality to be accessed from
 /// the business tier
 /// </summary>
-public class GenericDataAccess
-{
+public class GenericDataAccess {
     // static constructor
     static GenericDataAccess() { }
 
     // executes a command and returns the results as a DataTable object
-    public static DataTable ExecuteSelectCommand(DbCommand command)
-    {
+    public static DataTable ExecuteSelectCommand(DbCommand command) {
         // The DataTable to be returned
         DataTable table;
 
@@ -39,8 +37,7 @@ public class GenericDataAccess
     }
 
     // Creates and prepares a new DbCommand object on a new connection
-    public static DbCommand CreateCommand()
-    {
+    public static DbCommand CreateCommand() {
         // Obtain the database provider name
         string dataProviderName = JDwebstoreConfig.DbProviderName;
 

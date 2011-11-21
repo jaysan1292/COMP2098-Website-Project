@@ -5,10 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Item : System.Web.UI.Page
-{
-    protected void Page_Load(object sender, EventArgs e)
-    {
+public partial class Item : System.Web.UI.Page {
+    protected void Page_Load(object sender, EventArgs e) {
         // Retrieve ItemID from the query string
         string itemId = Request.QueryString["ItemID"];
 
@@ -16,15 +14,13 @@ public partial class Item : System.Web.UI.Page
         ItemDetails det = CatalogAccess.GetItemDetails(itemId);
 
         // Does the item exist?
-        if (det.Name != null)
-        {
+        if (det.Name != null) {
             PopulateControls(det);
         }
     }
-    
+
     // Fill the control with data
-    private void PopulateControls(ItemDetails det)
-    {
+    private void PopulateControls(ItemDetails det) {
         // Display item details
         lblTitle.Text = det.Name;
         lblDescription.Text = det.Description;

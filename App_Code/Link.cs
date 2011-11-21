@@ -6,11 +6,9 @@ using System.Web;
 /// <summary>
 /// Link factory class
 /// </summary>
-public class Link
-{
-	// Builds an absolute URL
-    private static string BuildAbsolute(string relativeUri)
-    {
+public class Link {
+    // Builds an absolute URL
+    private static string BuildAbsolute(string relativeUri) {
         // get current url
         Uri uri = HttpContext.Current.Request.Url;
 
@@ -26,8 +24,7 @@ public class Link
     }
 
     // Generate a category URL
-    public static string ToCategory(string categoryId, string page)
-    {
+    public static string ToCategory(string categoryId, string page) {
         if (page == "1")
             return BuildAbsolute(String.Format("Category.aspx?CategoryID={0}", categoryId));
         else
@@ -35,24 +32,20 @@ public class Link
     }
 
     // Generate a category URL for the first page
-    public static string ToCategory(string categoryId)
-    {
+    public static string ToCategory(string categoryId) {
         return ToCategory(categoryId, "1");
     }
 
-    public static string ToItem(string itemId)
-    {
+    public static string ToItem(string itemId) {
         return BuildAbsolute(String.Format("Item.aspx?ItemID={0}", itemId));
     }
 
-    public static string ToItemImage(string fileName)
-    {
+    public static string ToItemImage(string fileName) {
         // build item URL
         return BuildAbsolute("/Images/ItemImages/" + fileName);
     }
 
-    public static string ToSearch(string query, string page)
-    {
+    public static string ToSearch(string query, string page) {
         if (page == "1")
             return BuildAbsolute(String.Format("/Search.aspx?q={0}", query));
         else

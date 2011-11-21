@@ -8,13 +8,11 @@ using System.Data.Common;
 /// <summary>
 /// Item catalog business tier component
 /// </summary>
-public class CatalogAccess
-{
+public class CatalogAccess {
     public CatalogAccess() { }
 
     // Retrieve the list of categories
-    public static DataTable GetCategories()
-    {
+    public static DataTable GetCategories() {
         // get a configured DbCommand object
         DbCommand comm = GenericDataAccess.CreateCommand();
 
@@ -26,8 +24,7 @@ public class CatalogAccess
     }
 
     // Get category details
-    public static CategoryDetails GetCategoryDetails(string categoryId)
-    {
+    public static CategoryDetails GetCategoryDetails(string categoryId) {
         // get a configured DbCommand object
         DbCommand comm = GenericDataAccess.CreateCommand();
 
@@ -47,8 +44,7 @@ public class CatalogAccess
         // wrap retrieved data into a CategoryDetails object
         CategoryDetails details = new CategoryDetails();
 
-        if (table.Rows.Count > 0)
-        {
+        if (table.Rows.Count > 0) {
             details.Name = table.Rows[0]["Name"].ToString();
             details.Description = table.Rows[0]["Description"].ToString();
         }
@@ -58,8 +54,7 @@ public class CatalogAccess
     }
 
     // Get item details
-    public static ItemDetails GetItemDetails(string itemId)
-    {
+    public static ItemDetails GetItemDetails(string itemId) {
         // get a configured DbCommand object
         DbCommand comm = GenericDataAccess.CreateCommand();
 
@@ -79,8 +74,7 @@ public class CatalogAccess
         // wrap retrieved data into an ItemDetails object
         ItemDetails details = new ItemDetails();
 
-        if (table.Rows.Count > 0)
-        {
+        if (table.Rows.Count > 0) {
             DataRow dr = table.Rows[0];
 
             // get item details
@@ -98,8 +92,7 @@ public class CatalogAccess
     }
 
     // retrieve the list of items in a category
-    public static DataTable GetItemsInCategory(string categoryId, string pageNumber, out int totalPages)
-    {
+    public static DataTable GetItemsInCategory(string categoryId, string pageNumber, out int totalPages) {
         // get a configured DbCommand object
         DbCommand comm = GenericDataAccess.CreateCommand();
 
@@ -155,8 +148,7 @@ public class CatalogAccess
     }
 
     // Retrieve the list of products on catalog promotion
-    public static DataTable GetItemsOnFront(string pageNumber, out int totalPages)
-    {
+    public static DataTable GetItemsOnFront(string pageNumber, out int totalPages) {
         // get a configured DbCommand object
         DbCommand comm = GenericDataAccess.CreateCommand();
 
@@ -203,8 +195,7 @@ public class CatalogAccess
     }
 
     // Searches the catalog
-    public static DataTable SearchCatalog(string query, string pageNumber, out int totalPages)
-    {
+    public static DataTable SearchCatalog(string query, string pageNumber, out int totalPages) {
         DbCommand comm = GenericDataAccess.CreateCommand();
 
         comm.CommandText = "JDwebstore-SearchItems";
@@ -238,24 +229,22 @@ public class CatalogAccess
         param.Direction = ParameterDirection.Output;
         param.DbType = DbType.Int32;
         comm.Parameters.Add(param);
-       
+
         DataTable table = GenericDataAccess.ExecuteSelectCommand(comm);
 
-        int howManyItems=Int32.Parse(comm.Parameters["@HowManyItems"].Value.ToString());
-        totalPages=(int)Math.Ceiling((double)howManyItems/(double)JDwebstoreConfig.ItemsPerPage);
+        int howManyItems = Int32.Parse(comm.Parameters["@HowManyItems"].Value.ToString());
+        totalPages = (int)Math.Ceiling((double)howManyItems / (double)JDwebstoreConfig.ItemsPerPage);
 
         return table;
     }
 }
 
-public struct CategoryDetails
-{
+public struct CategoryDetails {
     public string Name;
     public string Description;
 }
 
-public struct ItemDetails
-{
+public struct ItemDetails {
     public string ItemID;
     public string Name;
     public string Description;

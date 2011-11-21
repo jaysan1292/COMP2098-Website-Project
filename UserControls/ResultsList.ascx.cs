@@ -5,16 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UserControls_ResultsList : System.Web.UI.UserControl
-{
-    protected void Page_Load(object sender, EventArgs e)
-    {
+public partial class UserControls_ResultsList : System.Web.UI.UserControl {
+    protected void Page_Load(object sender, EventArgs e) {
         PopulateControls();
-
     }
 
-    private void PopulateControls()
-    {
+    private void PopulateControls() {
         // Retrieve Page from the query string
         string page = Request.QueryString["Page"];
 

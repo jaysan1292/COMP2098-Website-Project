@@ -7,42 +7,33 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 // simple struct that represents a (page number, url) association
-public struct PageUrl
-{
+public struct PageUrl {
     private string page;
     private string url;
 
     // Page and Url property definitions
-    public string Page
-    {
-        get
-        {
+    public string Page {
+        get {
             return page;
         }
     }
-    public string Url
-    {
-        get
-        {
+    public string Url {
+        get {
             return url;
         }
     }
 
     // constructor
-    public PageUrl(string page, string url)
-    {
+    public PageUrl(string page, string url) {
         this.page = page;
         this.url = url;
     }
 }
 
-public partial class UserControls_Pager : System.Web.UI.UserControl
-{
-    public void Show(int currentPage, int totalPages, string firstPageUrl, string pageUrlFormat, bool showPages)
-    {
+public partial class UserControls_Pager : System.Web.UI.UserControl {
+    public void Show(int currentPage, int totalPages, string firstPageUrl, string pageUrlFormat, bool showPages) {
         // display paging controls
-        if (totalPages > 1)
-        {
+        if (totalPages > 1) {
             // make the pager visible
             this.Visible = true;
 
@@ -51,12 +42,9 @@ public partial class UserControls_Pager : System.Web.UI.UserControl
             lblTotalPages.Text = totalPages.ToString();
 
             // create the Previous link
-            if (currentPage == 1)
-            {
+            if (currentPage == 1) {
                 lnkPrevious.Enabled = false;
-            }
-            else
-            {
+            } else {
                 NameValueCollection query = Request.QueryString;
                 string paramName, newQueryString = "?";
                 for (int i = 0; i < query.Count; i++)
@@ -67,12 +55,9 @@ public partial class UserControls_Pager : System.Web.UI.UserControl
             }
 
             // create the Next link
-            if (currentPage == totalPages)
-            {
+            if (currentPage == totalPages) {
                 lnkNext.Enabled = false;
-            }
-            else
-            {
+            } else {
                 NameValueCollection query = Request.QueryString;
                 string paramName, newQueryString = "?";
                 for (int i = 0; i < query.Count; i++)
@@ -84,15 +69,13 @@ public partial class UserControls_Pager : System.Web.UI.UserControl
             }
 
             // create the page links
-            if (showPages)
-            {
+            if (showPages) {
                 // the list of pages and their URLs as an array
                 PageUrl[] pages = new PageUrl[totalPages];
 
                 // generate (page, url) elements
                 pages[0] = new PageUrl("1", firstPageUrl);
-                for (int i = 2; i <= totalPages; i++)
-                {
+                for (int i = 2; i <= totalPages; i++) {
                     pages[i - 1] = new PageUrl(i.ToString(), String.Format(pageUrlFormat, i));
                 }
                 // do not generate a link for the currentpage

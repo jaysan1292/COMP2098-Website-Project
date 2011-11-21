@@ -5,15 +5,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UserControls_ItemList : System.Web.UI.UserControl
-{
-    protected void Page_Load(object sender, EventArgs e)
-    {
+public partial class UserControls_ItemList : System.Web.UI.UserControl {
+    protected void Page_Load(object sender, EventArgs e) {
         PopulateControls();
     }
 
-    private void PopulateControls()
-    {
+    private void PopulateControls() {
         // Retrieve CategoryID from the query string
         string categoryId = Request.QueryString["CategoryID"];
 
@@ -32,8 +29,7 @@ public partial class UserControls_ItemList : System.Web.UI.UserControl
         string pagerFormat = "";
 
         // If performing a product search
-        if (query != null)
-        {
+        if (query != null) {
             // Perform search
             lstItems.DataSource = CatalogAccess.SearchCatalog(query, page, out totalPages);
             lstItems.DataBind();
@@ -44,8 +40,7 @@ public partial class UserControls_ItemList : System.Web.UI.UserControl
         }
 
         // If browsing a category..
-        if (categoryId != null)
-        {
+        if (categoryId != null) {
             // Retrieve list of products in a category
             lstItems.DataSource = CatalogAccess.GetItemsInCategory(categoryId, page, out totalPages);
             lstItems.DataBind();
@@ -53,18 +48,14 @@ public partial class UserControls_ItemList : System.Web.UI.UserControl
             // get first page url and pager format
             firstPageUrl = Link.ToCategory(categoryId, "1");
             pagerFormat = Link.ToCategory(categoryId, "{0}");
-        }
-        else if (categoryId != null)
-        {
+        } else if (categoryId != null) {
             // Retrieve list of products 
             lstItems.DataSource = CatalogAccess.GetItemsInCategory(categoryId, page, out totalPages);
             lstItems.DataBind();
             // get first page url and pager format
             firstPageUrl = Link.ToCategory(categoryId, "1");
             pagerFormat = Link.ToCategory(categoryId, "{0}");
-        }
-        else
-        {
+        } else {
             // Retrieve list of products on catalog promotion
             lstItems.DataSource = CatalogAccess.GetItemsOnFront(page, out totalPages);
             lstItems.DataBind();
