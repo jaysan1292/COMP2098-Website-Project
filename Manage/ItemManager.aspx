@@ -20,7 +20,7 @@
     <div class="itemList">
         <asp:DataList ID="lstItems" runat="server" DataSourceID="ItemDataSource" 
             onitemcreated="lstItems_ItemCreated">
-            <AlternatingItemStyle BackColor="#F3F3F3" />
+            <AlternatingItemStyle BackColor="#EDEDED" />
             <ItemTemplate>
                 <!-- Original Values -->
                 <asp:HiddenField ID="hidItemID" runat="server" Value='<%# Eval("ItemID") %>' ClientIDMode="Predictable" />
