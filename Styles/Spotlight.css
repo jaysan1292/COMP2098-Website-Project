@@ -1,0 +1,81 @@
+﻿#spotlight {
+    width: 546px;
+    height: 546px;
+    box-shadow: 0 0 10px #AAAAAA;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* Slide Container */
+.slides_container {
+    width: 546px;
+    overflow: hidden;
+    position: relative;
+    display: none;
+}
+
+/* Slides */
+.slides_container div.slide {
+    width: 546px;
+    height: 546px;
+    display: block;
+}
+
+.slides_container div.slide a img {
+    margin: 23px;
+}
+
+/* Pagination */
+
+.pagination {
+    margin: -20px auto 0;
+    width: 100px;
+}
+
+.pagination li {
+    float: left;
+    margin: 0 1px;
+    list-style: none;
+}
+
+.pagination li a {
+    display: block;
+    width: 12px;
+    height: 0;
+    padding-top: 12px;
+    background-image: url(../Images/Spotlight/pagination.png);
+    background-position: 0 0;
+    float: left;
+    overflow: hidden;
+}
+
+.pagination li.current a {
+    background-position: 0 -12px;
+}
+
+/* Caption */
+
+.caption {
+    z-index: 500;
+    position: absolute;
+    top: -35px;
+    left: 0;
+    height: 60px;
+    padding: 5px 20px 0 20px;
+    width: 506px;
+    font-size: 1em;
+    font-weight:bold;
+    line-height: 1.33;
+    color: #000;
+    background:url(../Images/Spotlight/captionbg.png);
+}
+
+.caption a{
+    color:Black;
+    text-decoration:none;
+    cursor:default;
+    width:546px;
+    height:66px;
+}

@@ -175,16 +175,6 @@ hr {
     width: 70%;
 }
 
-#spotlight {
-    text-align: center;
-    width: 800px;
-    background-color: White;
-}
-
-#spotlight h1 {
-    font-size: 56pt;
-}
-
 #itemcontainer {
     height: 110px;
     width: 100%;
@@ -295,7 +285,15 @@ li.match .product-price {
     display: none;
     z-index: 1001;
     padding: 10px;
-    border: 1px solid #A2A2A2;
+    box-shadow: 0 0 64px #333;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid #A2A2A2;
+    border-bottom: 1px solid #A2A2A2;
 }
 #fade {
     display: none;
@@ -349,9 +347,16 @@ li.match .product-price {
 
 #addItemForm {
     background: #E4E4E4;
-    border: 1px solid #C8C8C8;
     width: 100%;
     height: 366px;
+    border-top: 1px solid #C8C8C8;
+    border-left: 1px solid #C8C8C8;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 .tooltip {
     display: none;
@@ -400,85 +405,14 @@ li.match .product-price {
     right: auto;
 }
 
-/*SLIDER GALLERY*/
-
-#gallery {
-    /* CSS3 Box Shadow */
-    -moz-box-shadow: 0 0 3px #AAAAAA;
-    -webkit-box-shadow: 0 0 3px #AAAAAA;
-    box-shadow: 0 0 3px #AAAAAA;
-    /* CSS3 Rounded Corners */
-    -moz-border-radius-bottomleft: 4px;
-    -webkit-border-bottom-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    -moz-border-radius-bottomright: 4px;
-    -webkit-border-bottom-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border: 1px solid white;
-    background: url(../Images/Spotlight/panel.jpg) repeat-x bottom center #FFFFFF;
-    /* The width of the gallery */
-    width: 780px;
-    overflow: hidden;
-}
-
-#slides {
-    /* This is the slide area */
-    height: 400px;
-    /* jQuery changes the width later on to the sum of the widths of all the slides. */
-    width: 780px;
-    overflow: hidden;
-}
-
-.slide {
-    float: left;
-}
-
-#menu {
-    /* This is the container for the thumbnails */
-    height: 45px;
-}
-
-ul {
-    margin: 0px;
-    padding: 0px;
-}
-
-li {
-    /* Every thumbnail is a li element */
-    width: 60px;
-    display: inline-block;
-    list-style: none;
-    height: 45px;
-    overflow: hidden;
-}
-
-li.inact:hover {
-    /* The inactive state, highlighted on mouse over */
-    background: url(../Images/Spotlight/pic_bg.png) repeat;
-}
-
-li.act, li.act:hover {
-    /* The active state of the thumb */
-    background: url(../Images/Spotlight/active_bg.png) no-repeat;
-}
-
-li.act a {
-    cursor: default;
-}
-
-.fbar {
-    /* The left-most vertical bar, next to the first thumbnail */
-    width: 2px;
-    background: url(../Images/Spotlight/divider.png) no-repeat right;
-}
-
-li a {
-    display: block;
-    background: url(../Images/Spotlight/divider.png) no-repeat right;
-    height: 35px;
-    padding-top: 10px;
-}
-
-a img {
-    border: none;
+.ItemListContainer {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0 0 5px #AAAAAA;
+    height: 250px;
+    width: 253px;
+    padding: 0px 6px 1px 1px;
+    margin: 5px 5px -5px 7px;
 }
