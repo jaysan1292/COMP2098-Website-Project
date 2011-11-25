@@ -1,15 +1,22 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Spotlight.ascx.cs" Inherits="UserControls_Spotlight" %>
+<script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
         $('#spotlight').slides({
+            generatePagination: true,
             pagination: true,
+            slideEasing: 'easeInOutQuint',
+            slideSpeed: 500,
+            randomize: true,
+            preload: true,
+            preloadImage: 'Images/Spotlight/loading.gif',
             play: 5000,
             pause: 2500,
             hoverPause: true,
             animationStart: function (current) {
                 $('.caption').animate({
-                    top: -35
-                }, 100);
+                    top: -60
+                }, 200);
                 if (window.console && console.log) {
                     // example return of current slide number
                     console.log('animationStart on slide: ', current);

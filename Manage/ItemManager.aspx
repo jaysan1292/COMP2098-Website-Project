@@ -1,9 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeFile="ItemManager.aspx.cs" Inherits="Manage_ItemManager" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="ItemManager.aspx.cs" Inherits="Manage_ItemManager" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <script src="../Scripts/jquery-1.7.min.js" type="text/javascript"></script>
+    <script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js" type="text/javascript"></script>
     <script src="../Scripts/menuanimation.js" type="text/javascript"></script>
     <script src="../Scripts/itemmanager.js" type="text/javascript"></script>
+    <link href="../Styles/ItemManager.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1>
@@ -18,25 +20,19 @@
         Name
     </div>
     <div class="itemList">
-        <asp:DataList ID="lstItems" runat="server" DataSourceID="ItemDataSource" 
-            onitemcreated="lstItems_ItemCreated">
+        <asp:DataList ID="lstItems" runat="server" DataSourceID="ItemDataSource" OnItemCreated="lstItems_ItemCreated">
             <AlternatingItemStyle BackColor="#EDEDED" />
             <ItemTemplate>
                 <!-- Original Values -->
                 <asp:HiddenField ID="hidItemID" runat="server" Value='<%# Eval("ItemID") %>' ClientIDMode="Predictable" />
                 <asp:HiddenField ID="hidName" runat="server" Value='<%# Eval("Name") %>' ClientIDMode="Predictable" />
-                <asp:HiddenField ID="hidDescription" runat="server" Value='<%# Eval("Description") %>'
-                    ClientIDMode="Predictable" />
-                <asp:HiddenField ID="hidPrice" runat="server" Value='<%# Eval("Price","{0:c}") %>'
-                    ClientIDMode="Predictable" />
-                <asp:HiddenField ID="hidKeywords" runat="server" Value='<%# Eval("Keywords") %>'
-                    ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidDescription" runat="server" Value='<%# Eval("Description") %>' ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidPrice" runat="server" Value='<%# Eval("Price","{0:c}") %>' ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidKeywords" runat="server" Value='<%# Eval("Keywords") %>' ClientIDMode="Predictable" />
                 <asp:HiddenField ID="hidImage" runat="server" Value='<%# Eval("Image") %>' ClientIDMode="Predictable" />
-                <asp:HiddenField ID="hidCategory" runat="server" Value='<%# Eval("CategoryID") %>'
-                    ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidCategory" runat="server" Value='<%# Eval("CategoryID") %>' ClientIDMode="Predictable" />
                 <asp:HiddenField ID="hidOnFront" runat="server" Value='<%# Eval("OnFront") %>' ClientIDMode="Predictable" />
-                <asp:HiddenField ID="hidOnSlides" runat="server" Value='<%# Eval("OnSlides") %>'
-                    ClientIDMode="Predictable" />
+                <asp:HiddenField ID="hidOnSlides" runat="server" Value='<%# Eval("OnSlides") %>' ClientIDMode="Predictable" />
                 <!-- End Original Values -->
                 <div class="manageList">
                     <div class="itemheader" style="width: 764px;" onmousedown="toggleSlide('<%# Eval("ItemID") %>');">
@@ -47,8 +43,7 @@
                             <%# Eval("Name") %>
                         </span>
                     </div>
-                    <div id="<%# Eval("ItemID") %>" class="iteminfo" style="display: none; overflow: hidden;
-                        height: 285px; background: #FFF; border: 1px #F5F5F5;">
+                    <div id="<%# Eval("ItemID") %>" class="iteminfo" style="display: none; overflow: hidden; height: 285px; background: #FFF; border: 1px #F5F5F5;">
                         <hr style="width: 75%;" />
                         <%-- ITEM INFORMATION GOES HERE --%>
                         <form action="">
@@ -58,8 +53,7 @@
                                     Name:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="txtName" runat="server" Text='<%# Eval("Name") %>' ClientIDMode="Predictable"
-                                        ValidationGroup='VG<%# Eval("ItemID") %>'></asp:TextBox>
+                                    <asp:TextBox ID="txtName" runat="server" Text='<%# Eval("Name") %>' ClientIDMode="Predictable" ValidationGroup='VG<%# Eval("ItemID") %>'></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -67,8 +61,7 @@
                                     Description:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="txtDescription" runat="server" Height="75px" Text='<%# Eval("Description") %>'
-                                        TextMode="MultiLine" ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable"></asp:TextBox>
+                                    <asp:TextBox ID="txtDescription" runat="server" Height="75px" Text='<%# Eval("Description") %>' TextMode="MultiLine" ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -76,8 +69,7 @@
                                     Keywords:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("Keywords") %>' ValidationGroup='VG<%# Eval("ItemID") %>'
-                                        ClientIDMode="Predictable"></asp:TextBox>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("Keywords") %>' ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -85,8 +77,7 @@
                                     Price:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="txtPrice" runat="server" Width="150px" Text='<%# Eval("Price", "{0:c}") %>'
-                                        ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable"></asp:TextBox>
+                                    <asp:TextBox ID="txtPrice" runat="server" Width="150px" Text='<%# Eval("Price", "{0:c}") %>' ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -94,8 +85,7 @@
                                     Category:
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="lstCategories" runat="server" DataSourceID="CategoryDataSource"
-                                        DataTextField="Name" DataValueField="CategoryID" ClientIDMode="Predictable">
+                                    <asp:DropDownList ID="lstCategories" runat="server" DataSourceID="CategoryDataSource" DataTextField="Name" DataValueField="CategoryID" ClientIDMode="Predictable">
                                     </asp:DropDownList>
                                     <script type="text/javascript">
                                         var iid = <%# Eval("ItemID") %> - 1;
@@ -111,8 +101,7 @@
                                     On Frontpage:
                                 </td>
                                 <td style="text-align: left;">
-                                    <asp:CheckBox ID="chkOnFront" runat="server" CssClass="checkbox" Checked='<%# Eval("OnFront") %>'
-                                        ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable" />
+                                    <asp:CheckBox ID="chkOnFront" runat="server" CssClass="checkbox" Checked='<%# Eval("OnFront") %>' ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable" />
                                 </td>
                             </tr>
                             <tr>
@@ -120,16 +109,14 @@
                                     On Slideshow:
                                 </td>
                                 <td align="left">
-                                    <asp:CheckBox ID="chkOnSlides" runat="server" CssClass="checkbox" Checked='<%# Eval("OnSlides") %>'
-                                        ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable" />
+                                    <asp:CheckBox ID="chkOnSlides" runat="server" CssClass="checkbox" Checked='<%# Eval("OnSlides") %>' ValidationGroup='VG<%# Eval("ItemID") %>' ClientIDMode="Predictable" />
                                 </td>
                             </tr>
                         </table>
                         </form>
                         <div style="float: right; position: relative; bottom: 93px; right: 30px;">
                             Image:
-                            <img src='../Images/ItemImages/<%# Eval("Thumbnail") %>' alt="" style="width: 100px;
-                                height: 100px; float: right; position: relative; top: -21px; left: 6px; border: 1px;" />
+                            <img src='../Images/ItemImages/<%# Eval("Thumbnail") %>' alt="" style="width: 100px; height: 100px; float: right; position: relative; top: -21px; left: 6px; border: 1px;" />
                         </div>
                         <div>
                             <span style="<%--position: relative; left: 310px; --%>">
@@ -146,16 +133,14 @@
     </div>
     <div id="addItem">
         <span style="font-weight: bold; font-size: 14pt;">Add a new item to the database</span><br />
-        <i class="validation">Fields in bold are required.<asp:ValidationSummary ID="ValidationSummary1"
-            runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="addItem" />
+        <i class="validation">Fields in bold are required.<asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="addItem" />
         </i>&nbsp;
         <div id="addItemForm">
             <form name="addForm" action="">
             <table>
                 <tr>
                     <td style="width: 180px;">
-                        <b>Name:</b><span class="validation"><asp:RequiredFieldValidator ID="RequiredFieldValidator1"
-                            runat="server" ControlToValidate="txtName" ErrorMessage="Name is required." ValidationGroup="addItem">&nbsp;</asp:RequiredFieldValidator>
+                        <b>Name:</b><span class="validation"><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtName" ErrorMessage="Name is required." ValidationGroup="addItem">&nbsp;</asp:RequiredFieldValidator>
                         </span>
                     </td>
                     <td>
@@ -176,9 +161,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <b>Price</b>:<span class="validation"><asp:RequiredFieldValidator ID="RequiredFieldValidator2"
-                            runat="server" ControlToValidate="txtPrice" ErrorMessage="Price is required."
-                            ValidationGroup="addItem">&nbsp;</asp:RequiredFieldValidator>
+                        <b>Price</b>:<span class="validation"><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPrice" ErrorMessage="Price is required." ValidationGroup="addItem">&nbsp;</asp:RequiredFieldValidator>
                         </span>
                     </td>
                     <td>
@@ -209,15 +192,11 @@
                 </tr>
                 <tr>
                     <td class="style1">
-                        <b>Category</b>:<span class="validation"><asp:RequiredFieldValidator ID="RequiredFieldValidator3"
-                            runat="server" ControlToValidate="lstCategories" ErrorMessage="Item must have a Category."
-                            InitialValue="0" ValidationGroup="addItem">&nbsp;</asp:RequiredFieldValidator>
+                        <b>Category</b>:<span class="validation"><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="lstCategories" ErrorMessage="Item must have a Category." InitialValue="0" ValidationGroup="addItem">&nbsp;</asp:RequiredFieldValidator>
                         </span>
                     </td>
                     <td class="style1">
-                        <asp:DropDownList ID="lstCategories" runat="server" DataSourceID="CategoryDataSource"
-                            DataTextField="Name" DataValueField="CategoryID" AppendDataBoundItems="True"
-                            ClientIDMode="Static" ValidationGroup="addItem">
+                        <asp:DropDownList ID="lstCategories" runat="server" DataSourceID="CategoryDataSource" DataTextField="Name" DataValueField="CategoryID" AppendDataBoundItems="True" ClientIDMode="Static" ValidationGroup="addItem">
                             <asp:ListItem Value="0">Select a Category</asp:ListItem>
                         </asp:DropDownList>
                         <div class="tooltip" id="category">
@@ -254,10 +233,7 @@
     </div>
     <div id="fade" onclick="hideLightbox();">
     </div>
-    <asp:SqlDataSource ID="ItemDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-        DeleteCommand="DELETE FROM [JDwebstore-Item] WHERE [ItemID] = @ItemID" InsertCommand="INSERT INTO [JDwebstore-Item] ([Name], [Price], [Description], [Thumbnail], [Image], [OnFront], [OnSlides], [Keywords]) VALUES (@Name, @Price, @Description, @Thumbnail, @Image, @OnFront, @OnSlides, @Keywords)"
-        SelectCommand="JDwebstore-GetItemCategories" UpdateCommand="UPDATE [JDwebstore-Item] SET [Name] = @Name, [Price] = @Price, [Description] = @Description, [Thumbnail] = @Thumbnail, [Image] = @Image, [OnFront] = @OnFront, [OnSlides] = @OnSlides, [Keywords] = @Keywords WHERE [ItemID] = @ItemID"
-        SelectCommandType="StoredProcedure">
+    <asp:SqlDataSource ID="ItemDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [JDwebstore-Item] WHERE [ItemID] = @ItemID" InsertCommand="INSERT INTO [JDwebstore-Item] ([Name], [Price], [Description], [Thumbnail], [Image], [OnFront], [OnSlides], [Keywords]) VALUES (@Name, @Price, @Description, @Thumbnail, @Image, @OnFront, @OnSlides, @Keywords)" SelectCommand="JDwebstore-GetItemCategories" UpdateCommand="UPDATE [JDwebstore-Item] SET [Name] = @Name, [Price] = @Price, [Description] = @Description, [Thumbnail] = @Thumbnail, [Image] = @Image, [OnFront] = @OnFront, [OnSlides] = @OnSlides, [Keywords] = @Keywords WHERE [ItemID] = @ItemID" SelectCommandType="StoredProcedure">
         <DeleteParameters>
             <asp:Parameter Name="ItemID" Type="Int32" />
         </DeleteParameters>
@@ -283,8 +259,7 @@
             <asp:Parameter Name="ItemID" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="CategoryDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-        SelectCommand="SELECT [CategoryID], [Name] FROM [JDwebstore-Category] WHERE ([CategoryID] &lt;&gt; @CategoryID)">
+    <asp:SqlDataSource ID="CategoryDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [CategoryID], [Name] FROM [JDwebstore-Category] WHERE ([CategoryID] &lt;&gt; @CategoryID)">
         <SelectParameters>
             <asp:Parameter DefaultValue="0" Name="CategoryID" Type="Int32" />
         </SelectParameters>

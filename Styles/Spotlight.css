@@ -1,6 +1,6 @@
 ﻿#spotlight {
     width: 546px;
-    height: 546px;
+    height: 567px;
     box-shadow: 0 0 10px #AAAAAA;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -22,24 +22,26 @@
     height: 546px;
     display: block;
 }
-
 .slides_container div.slide a img {
     margin: 23px;
 }
 
 /* Pagination */
-
 .pagination {
-    margin: -20px auto 0;
-    width: 100px;
+    margin: 0 auto 0;
+    float: right;
+    position: relative;
+    left: -50%;
+    text-align: left;
 }
-
 .pagination li {
     float: left;
-    margin: 0 1px;
+    margin: 0 3px;
     list-style: none;
+    display: block;
+    position: relative;
+    left: 50%;
 }
-
 .pagination li a {
     display: block;
     width: 12px;
@@ -50,13 +52,12 @@
     float: left;
     overflow: hidden;
 }
-
 .pagination li.current a {
     background-position: 0 -12px;
+    cursor: default;
 }
 
 /* Caption */
-
 .caption {
     z-index: 500;
     position: absolute;
@@ -66,16 +67,16 @@
     padding: 5px 20px 0 20px;
     width: 506px;
     font-size: 1em;
-    font-weight:bold;
+    font-weight: bold;
     line-height: 1.33;
     color: #000;
-    background:url(../Images/Spotlight/captionbg.png);
+    background: url(../Images/Spotlight/captionbg.png);
 }
-
-.caption a{
-    color:Black;
-    text-decoration:none;
-    cursor:default;
-    width:546px;
-    height:66px;
+.caption a {
+    color: Black;
+    text-decoration: none;
+    cursor: default;
+    width: 546px;
+    height: 66px;
+    text-shadow: 1px 1px #FFF;
 }
