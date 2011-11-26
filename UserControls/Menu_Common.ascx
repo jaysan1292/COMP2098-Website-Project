@@ -1,4 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Menu_Common.ascx.cs" Inherits="UserControls_WebUserControl" %>
+<script src="../Scripts/jquery-1.7.min.js" type="text/javascript"></script>
+<script src="../Scripts/jquery.easing.1.3.js" type="text/javascript"></script>
 <script type="text/javascript">
     function searchFocus(searchbox) {
         if (searchbox.value == "What are you looking for?") {
@@ -22,14 +24,36 @@
         } else {
             return true;
         }
-
     }
+
+    $(document).ready(function () {
+        $("#nav-category").hover(
+            function () {
+                $('ul', this).slideDown(250, 'easeInOutCubic');
+                $('a', this).addClass('active');
+            },
+            function () {
+                $('ul', this).slideUp(150, 'easeInOutCubic');
+                $('a', this).removeClass('active');
+            }
+        );
+    });
 </script>
 <ul id="menu">
     <li id="nav-home">
         <asp:HyperLink ID="lnkHome" runat="server" NavigateUrl="~/Default.aspx">Home</asp:HyperLink></li>
     <li id="nav-category">
-        <asp:HyperLink ID="lnkCategory" runat="server" NavigateUrl="~/Category.aspx">Categories</asp:HyperLink></li>
+        <asp:HyperLink ID="lnkCategory" runat="server" NavigateUrl="javascript:;">Categories</asp:HyperLink>
+        <ul id="submenu-category">
+            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                <ItemTemplate>
+                    <li class="submenu-item">
+                        <asp:HyperLink ID="lnkCategory" runat="server" NavigateUrl='<%# Link.ToCategory(Eval("CategoryID").ToString()) %>'><%# Eval("Name") %></asp:HyperLink>
+                    </li>
+                </ItemTemplate>
+            </asp:Repeater>
+        </ul>
+    </li>
     <li id="nav-account">
         <asp:HyperLink ID="lnkAccount" runat="server" NavigateUrl="~/Account.aspx">Account</asp:HyperLink></li>
     <li id="nav-search">
@@ -45,7 +69,7 @@
         </form>
     </li>
 </ul>
-<div id="submenu-category">
+<!--<div id="submenu-category">
     <asp:Repeater ID="lstCategory" runat="server" DataSourceID="SqlDataSource1">
         <ItemTemplate>
             <div class="submenu-item">
@@ -53,5 +77,5 @@
             </div>
         </ItemTemplate>
     </asp:Repeater>
-</div>
+</div>-->
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT CategoryID, Name FROM [JDwebstore-Category] WHERE (CategoryID &lt;&gt; 0)"></asp:SqlDataSource>

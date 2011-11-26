@@ -12,7 +12,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div id="content-left">
-        <uc2:CategoryList ID="CategoryList1" runat="server" />
+        
     </div>
     <div id="content-right">
         <uc3:Spotlight ID="Spotlight1" runat="server" />

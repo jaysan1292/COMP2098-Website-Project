@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <script src="../Scripts/jquery-1.7.min.js" type="text/javascript"></script>
-    <script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.easing.1.3.js" type="text/javascript"></script>
     <script src="../Scripts/menuanimation.js" type="text/javascript"></script>
     <script src="../Scripts/itemmanager.js" type="text/javascript"></script>
     <link href="../Styles/ItemManager.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
     Select an item to modify its information.<br />
     Or, <a href="javascript:;" onclick="hideAll(); showLightbox();">add a new item.</a>
     <hr />
-    <div class="itemList-header" style="width: 780px; font-weight: bold; background: #ECECEC;">
+    <div class="itemList-header" style="width: 780px; font-weight: bold; background: #D8D8D8;">
         <div style="width: 50px; display: inline-block;">
             ItemID
         </div>

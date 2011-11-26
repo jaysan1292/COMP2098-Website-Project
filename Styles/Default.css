@@ -6,6 +6,9 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+:focus {
+    outline: 5px auto blue;
+}
 hr {
     color: #F0F0F0;
     border: 1px solid;
@@ -128,7 +131,7 @@ hr {
 #navbar #menu li#nav-home a:active {
     background-position: 0px -78px;
 }
-#navbar #menu li#nav-category a:active {
+#navbar #menu li#nav-category a:active, #navbar #menu li#nav-category a.active {
     background-position: -120px -78px;
 }
 #navbar #menu li#nav-account a:active {
@@ -169,27 +172,30 @@ hr {
 }
 
 /*SUBMENU*/
-#submenu-category {
-    width: 250px;
+#nav-category #submenu-category {
+    width: 225px; 
     display: none;
-    border: 1px solid black;
+    border: 1px solid #888;
     z-index: 9001;
-    position: relative;
-    top: -18px;
+    position: absolute;
+    top: 38px;
     left: 120px;
     box-shadow: 0 4px 7px #323232;
-}
-#submenu-category .submenu-item {
+    float: right;
     background: #FCFCFC;
 }
-#submenu-category .submenu-item a {
+#nav-category #submenu-category .submenu-item a {
     text-decoration: none;
-    color: black;
-    display: block;
+    display: inline;
     padding: 2px 12px;
     color: #333;
+    background: none;
+    height: auto;
+    width: 241px;
+    position: relative;
+    left: -40px;
 }
-#submenu-category .submenu-item a:hover {
+#nav-category #submenu-category .submenu-item a:hover {
     color: #0085CF;
     background-color: #D6E5F2;
     text-decoration: none;
