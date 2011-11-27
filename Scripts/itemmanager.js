@@ -18,10 +18,12 @@ function showLightbox() {
 function hideLightbox() {
     if (!isFormEmpty()) {
         if (confirm('Are you sure you wish to cancel adding this item?\nUnsaved changes will be lost! :c')) {
-            closeDialog();
+            hideDialog();
+            addForm.reset();
         }
     } else {
-        closeDialog();
+        hideDialog();
+        addForm.reset();
     }
 }
 

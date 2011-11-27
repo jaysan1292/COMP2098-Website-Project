@@ -25,19 +25,6 @@
             return true;
         }
     }
-
-    $(document).ready(function () {
-        $("#nav-category").hover(
-            function () {
-                $('#submenu-category', this).slideDown(250, 'easeInOutCubic');
-                $('a', this).addClass('active');
-            },
-            function () {
-                $('#submenu-category', this).slideUp(150, 'easeInOutCubic');
-                $('a', this).removeClass('active');
-            }
-        );
-    });
 </script>
 <ul id="menu">
     <li id="nav-home">

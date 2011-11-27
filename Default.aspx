@@ -6,7 +6,6 @@
 <%@ Register Src="UserControls/AccountSidebar.ascx" TagName="AccountSidebar" TagPrefix="uc4" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link href="Styles/Spotlight.css" rel="stylesheet" type="text/css" />
-    <script src="Scripts/jquery-1.7.min.js" type="text/javascript"></script>
     <script src="Scripts/slides.jquery.js" type="text/javascript"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">

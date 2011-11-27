@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Spotlight.ascx.cs" Inherits="UserControls_Spotlight" %>
-<script src="../Scripts/jquery-1.7.min.js" type="text/javascript"></script>
-<script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js" type="text/javascript"></script>
+    <link href="Styles/Spotlight.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/slides.jquery.js" type="text/javascript"></script>
+<script src="../Scripts/jquery.easing.1.3.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
         $('#spotlight').slides({
@@ -45,7 +46,7 @@
     });
 </script>
 <div id="spotlight">
-    <div id="spot-ribbon" style="display:none;"></div>
+    <div id="spot-ribbon"></div>
     <div class="slides_container">
         <asp:Repeater ID="lstSpotImages" runat="server" DataSourceID="SqlDataSource1">
             <ItemTemplate>

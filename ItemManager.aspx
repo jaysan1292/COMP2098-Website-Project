@@ -1,12 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="ItemManager.aspx.cs" Inherits="Manage_ItemManager" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <script src="../Scripts/jquery-1.7.min.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery.easing.1.3.js" type="text/javascript"></script>
-    <script src="../Scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
-    <script src="../Scripts/menuanimation.js" type="text/javascript"></script>
-    <script src="../Scripts/itemmanager.js" type="text/javascript"></script>
-    <link href="../Styles/ItemManager.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/menuanimation.js" type="text/javascript"></script>
+    <script src="Scripts/itemmanager.js" type="text/javascript"></script>
+    <link href="Styles/ItemManager.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         $(document).ready(function () {
             init();
@@ -20,7 +17,10 @@
         Item Management</h1>
     Select an item to modify its information.<br />
     Or, <a href="javascript:;" onclick="hideAll(); showLightbox();">add a new item.</a>
-    Filter all items: <input type="text" />
+    <div style="display: inline; position: absolute; right: 8px; top: 107px;">
+        Filter items:
+        <input id="filter" type="text" />
+    </div>
     <hr />
     <div class="itemList-header" style="width: 780px; font-weight: bold; background: #D8D8D8;">
         <div style="width: 50px; display: inline-block;">
@@ -126,7 +126,7 @@
                         </form>
                         <div style="float: right; position: relative; bottom: 93px; right: 30px;">
                             Image:
-                            <img src='../Images/ItemImages/<%# Eval("Thumbnail") %>' alt="" style="width: 100px; height: 100px; float: right; position: relative; top: -21px; left: 6px; border: 1px;" />
+                            <img src='Images/ItemImages/<%# Eval("Thumbnail") %>' alt="" style="width: 100px; height: 100px; float: right; position: relative; top: -21px; left: 6px; border: 1px;" />
                         </div>
                         <div>
                             <span style="<%--position: relative; left: 310px; --%>">
