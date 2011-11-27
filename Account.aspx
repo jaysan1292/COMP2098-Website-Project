@@ -13,6 +13,6 @@
     <div>
         <h3>
             Admin stuff</h3>
-        <a href="Manage/ItemManager.aspx">View and manage all items in database</a>
+        <a href="Admin/ItemManager.aspx">View and manage all items in database</a>
     </div>
 </asp:Content>

@@ -3,15 +3,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <script src="../Scripts/jquery-1.7.min.js" type="text/javascript"></script>
     <script src="../Scripts/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="../Scripts/menuanimation.js" type="text/javascript"></script>
     <script src="../Scripts/itemmanager.js" type="text/javascript"></script>
     <link href="../Styles/ItemManager.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+            $('.searchbox').attr('disabled', true);
+            $('.searchbox').attr('style', 'background:white;');
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1>
         Item Management</h1>
     Select an item to modify its information.<br />
     Or, <a href="javascript:;" onclick="hideAll(); showLightbox();">add a new item.</a>
+    Filter all items: <input type="text" />
     <hr />
     <div class="itemList-header" style="width: 780px; font-weight: bold; background: #D8D8D8;">
         <div style="width: 50px; display: inline-block;">
@@ -88,6 +97,7 @@
                                     <asp:DropDownList ID="lstCategories" runat="server" DataSourceID="CategoryDataSource" DataTextField="Name" DataValueField="CategoryID" ClientIDMode="Predictable">
                                     </asp:DropDownList>
                                     <script type="text/javascript">
+                                        // After populating the dropdown list, select the applicable item.
                                         var iid = <%# Eval("ItemID") %> - 1;
                                         var cid = <%# Eval("CategoryID") %> - 1;
                                         var ddl = document.getElementById('ContentPlaceHolder1_lstItems_lstCategories_' + String(iid));
@@ -131,11 +141,14 @@
             </ItemTemplate>
         </asp:DataList>
     </div>
-    <div id="addItem">
+    <div id="addItem" class="dialog">
         <span style="font-weight: bold; font-size: 14pt;">Add a new item to the database</span><br />
         <i class="validation">Fields in bold are required.<asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False" ValidationGroup="addItem" />
-        </i>&nbsp;
-        <div id="addItemForm">
+        </i>
+        <div style="font-style: italic; color: #555; text-align: right; font-size: x-small; display: inline; position: absolute; right: 10px;">
+            PROTIP: Press &lt;TAB&gt; to switch between fields as you go.
+        </div>
+        <div id="addItemForm" class="dialog-inner-panel">
             <form name="addForm" action="">
             <table>
                 <tr>

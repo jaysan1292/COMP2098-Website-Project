@@ -29,11 +29,11 @@
     $(document).ready(function () {
         $("#nav-category").hover(
             function () {
-                $('ul', this).slideDown(250, 'easeInOutCubic');
+                $('#submenu-category', this).slideDown(250, 'easeInOutCubic');
                 $('a', this).addClass('active');
             },
             function () {
-                $('ul', this).slideUp(150, 'easeInOutCubic');
+                $('#submenu-category', this).slideUp(150, 'easeInOutCubic');
                 $('a', this).removeClass('active');
             }
         );

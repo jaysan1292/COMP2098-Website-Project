@@ -1,7 +1,17 @@
-﻿function showLightbox() {
-    document.getElementById('addItem').style.display = 'block';
-    document.getElementById('fade').style.display = 'block';
+﻿var addItem;
+var fadeDiv;
 
+function init() {
+    addItem = document.getElementById('addItem');
+    fadeDiv = document.getElementById('fade');
+}
+
+function showLightbox() {
+    $(fadeDiv).fadeIn(300, function () {
+        $(addItem).slideDown(350, 'easeOutBack', function () {
+            $('#ContentPlaceHolder1_txtName').focus();
+        });
+    });
     //document.getElemenyById('ContentPlaceHolder1_txtName').focus; // FIX THIS LINE
 }
 
@@ -9,15 +19,16 @@ function hideLightbox() {
     if (!isFormEmpty()) {
         if (confirm('Are you sure you wish to cancel adding this item?\nUnsaved changes will be lost! :c')) {
             closeDialog();
-            return;
         }
+    } else {
+        closeDialog();
     }
-    closeDialog(); // TODO: after finishing ln36 TODO, make sure this works
 }
 
 function closeDialog() {
-    document.getElementById('addItem').style.display = 'none';
-    document.getElementById('fade').style.display = 'none';
+    $(addItem).slideUp(400, 'easeInOutExpo', function () {
+        $(fadeDiv).fadeOut(500);
+    });
     addForm.reset();
 }
 
@@ -33,12 +44,13 @@ function isFormEmpty() {
     fields[6] = document.getElementById('ContentPlaceHolder1_chkOnFront');
     fields[7] = document.getElementById('ContentPlaceHolder1_chkOnSlides');
 
-    for (var i; i < 8; i++) { // TODO: figure out why this code doesn't execute
+    for (var i = 0; i < 8; i++) {
         if (i >= 0 && i <= 4) { // check text boxes
-            if (fields[i].value.length == 0) return false; // field is empty
-        }
-        if (i >= 5 && i <= 7) {
-            if (fields[i].value == 0 || fields[i].checked == false) return false;
+            if (fields[i].value.length != 0) return false; // field is empty
+        } else if (i == 5) { // check dropdown list
+            if (fields[i].value != 0) return false;
+        } else if (i > 5 && i <= 7) { // check checkboxes
+            if (fields[i].checked == true) return false;
         }
     }
     return true;

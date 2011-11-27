@@ -20,7 +20,6 @@ function slideDown(objname) {
     moving[objname] = true;
     dir[objname] = "down";
     startSlide(objname);
-    
 }
 
 function slideUp(objname) {

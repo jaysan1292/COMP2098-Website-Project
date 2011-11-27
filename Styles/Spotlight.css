@@ -7,6 +7,14 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+#spot-ribbon {
+    float: right;
+    background: url(../Images/ribbon.png);
+    height: 124px;
+    width: 124px;
+    position: absolute;
+    z-index: 6;
+}
 
 /* Slide Container */
 .slides_container {
@@ -64,7 +72,7 @@
     top: -35px;
     left: 0;
     height: 60px;
-    padding: 5px 20px 0 20px;
+    padding: 5px 20px 0 90px;
     width: 506px;
     font-size: 1em;
     font-weight: bold;

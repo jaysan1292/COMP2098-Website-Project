@@ -7,7 +7,7 @@ body {
     margin-right: auto;
 }
 :focus {
-    outline: 5px auto blue;
+    outline: 5px auto #0075D6;
 }
 hr {
     color: #F0F0F0;
@@ -35,207 +35,88 @@ hr {
     width: 800px;
     height: 0px;
 }
-
-/*NAVBAR*/
-#navbar {
-    height: 38px;
-    margin: 18px auto;
-    position: relative;
-    width: 800px;
-}
-#navbar #menu {
-    margin: 0px;
-    padding: 0px;
-    position: relative;
-    height: 38px;
-    top: -18px;
-}
-#navbar #menu li {
-    display: inline;
-}
-#navbar #menu li a, #navbar #menu {
-    background-image: url(../Images/Menu/navbar-bg.png);
-    background-repeat: no-repeat;
-}
-#navbar #menu li a {
-    float: left;
-    height: 0px;
-    overflow: hidden;
-    padding-top: 38px;
-    width: 120px;
-}
-#navbar #menu li#nav-search span {
-    height: 38px;
-    width: 152px;
-}
-.searchbox-dd {
-    border: 0px;
-    height: 21px;
-    position: relative;
-    top: 1px;
-    left: 3px;
-    width: 145px;
-}
-.searchbox {
-    border: 0px;
-    border-right: 1px solid #F5F5F5;
-    color: #7F7F7F;
-    height: 20px;
-    left: 9px;
-    padding-top: 0px;
-    position: relative;
-    top: 1px;
-    width: 250px;
-}
-.search-L, .search-R {
-    margin-left: -4px;
-    margin-right: -4px;
-    padding: 0px;
-    position: relative;
-}
-.search-L {
-    left: 9px;
-    top: 8px;
-}
-.search-R {
-    top: 8px;
-    left: 3px;
-}
-
-/*BUTTONS*/
-#navbar #menu li#nav-home a {
-    background-position: 0px 0px;
-}
-#navbar #menu li#nav-category a {
-    background-position: -120px 0px;
-}
-#navbar #menu li#nav-account a {
-    background-position: -240px 0px;
-}
-#navbar #menu li#nav-search #search {
-    background-position: -360px 0px;
-}
-
-/*HOVER*/
-#navbar #menu li#nav-home a:hover {
-    background-position: 0px -39px;
-}
-#navbar #menu li#nav-category a:hover {
-    background-position: -120px -39px;
-}
-#navbar #menu li#nav-account a:hover {
-    background-position: -240px -39px;
-}
-
-/*CLICKED*/
-#navbar #menu li#nav-home a:active {
-    background-position: 0px -78px;
-}
-#navbar #menu li#nav-category a:active, #navbar #menu li#nav-category a.active {
-    background-position: -120px -78px;
-}
-#navbar #menu li#nav-account a:active {
-    background-position: -240px -78px;
-}
-
-/*PRESSED*/
-#navbar #menu li#nav-home a.on {
-    background-position: 0px -117px;
-}
-#navbar #menu li#nav-category a.on {
-    background-position: -120px -117px;
-}
-#navbar #menu li#nav-account a.on {
-    background-position: -240px -117px;
-}
-#content-left {
-    float: left; /*background-color:Aqua;*/
-    width: 30%;
-}
-#content-right {
-    float: right; /*background-color:Orange;*/
-    width: 70%;
-}
-#itemcontainer {
-    height: 110px;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-}
-#itemimage {
-    float: left;
-    width: 110px;
-}
-#iteminfo {
-    float: right;
-    width: 590px;
-}
-
-/*SUBMENU*/
-#nav-category #submenu-category {
-    width: 225px; 
+/*DIALOGS*/
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -219px;
+    width: 500px;
+    height: 438px;
+    background: #EDEDED;
     display: none;
-    border: 1px solid #888;
-    z-index: 9001;
+    z-index: 1001;
+    padding: 10px;
+    box-shadow: 0 8px 16px #323232;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid #A2A2A2;
+    border-bottom: 1px solid #A2A2A2;
+}
+.dialog-inner-panel{
+    background: #E4E4E4;
+    width: 100%;
+    border-top: 1px solid #C8C8C8;
+    border-left: 1px solid #C8C8C8;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;    
+}
+#fade {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 1000;
+    opacity: 0.5;
+}
+/*ACCOUNT SIDEBAR*/
+#account-sidebar-wrapper {
     position: absolute;
-    top: 38px;
-    left: 120px;
-    box-shadow: 0 4px 7px #323232;
-    float: right;
-    background: #FCFCFC;
+    left: 10px;
+    width: 224px;
+    top: 0;
 }
-#nav-category #submenu-category .submenu-item a {
-    text-decoration: none;
-    display: inline;
-    padding: 2px 12px;
-    color: #333;
-    background: none;
-    height: auto;
-    width: 241px;
+#account-sidebar {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0px 0px 10px #AAA;
+    width: 204px;
+    padding: 10px;
+    position: absolute;
+    margin-top: 10px;
+}
+#account-sidebar.fixed {
+    position: fixed;
+    top: 0;
+}
+#account-header {
     position: relative;
-    left: -40px;
-}
-#nav-category #submenu-category .submenu-item a:hover {
-    color: #0085CF;
-    background-color: #D6E5F2;
-    text-decoration: none;
-}
-
-/*SEARCHRESULTS*/
-li.match {
-    list-style: none;
-    padding: 20px 16px 22px 112px;
-    border-top: solid #EFEFEF 1px;
-    background-repeat: no-repeat;
-    background-position: 6px 50%;
-    color: #333;
-}
-li.match .product-image {
-    float: left;
-    width: 377px;
-    margin-right: -168px;
-}
-li.match .product-image {
-    float: left;
-    width: 100px;
-    margin-left: -100px;
-    margin-right: 10px;
-}
-li.match .product-info {
-    float: left;
-    width: 377px;
-    margin-right: -168px;
-}
-li.match .product-info .h4 {
-    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+    left: -10px;
+    top: -10px;
+    background: url(../Images/ac-header.png);
+    width: 204px;
+    height: 20px;
+    color: white;
     font-weight: bold;
-    margin-bottom: 7px;
+    text-shadow: 1px 1px 1px #224272;
 }
-li.match .product-info .product-description {
+#signup-window {
+
 }
-li.match .product-price {
-    float: right;
-    width: 0px;
-    position: relative;
-    left: 300px;
+#login-window {
 }
