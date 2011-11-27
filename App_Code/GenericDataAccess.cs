@@ -62,4 +62,50 @@ public class GenericDataAccess {
         // Return the initialized command object
         return comm;
     }
+
+    // Execute an update, delete, or insert command
+    // and return the number of affect rows
+    public static int ExecuteNonQuery(DbCommand command) {
+        // the number of affected rows
+        int affectedRows = -1;
+
+        // Execute the command making sure the connection gets closed in the end
+        try {
+            command.Connection.Open();
+            // Execute the command and get the number of affected rows
+            affectedRows = command.ExecuteNonQuery();
+        } catch (Exception ex) {
+            // Log eventual errors and rethrow them
+            // Utilities.LogError(ex);
+            throw;
+        } finally {
+            // Close the connection
+            command.Connection.Close();
+        }
+        return affectedRows;
+    }
+
+    // Execute a select command and return a single result as a string
+    public static string ExecuteScalar(DbCommand command) {
+        // The value to be returned
+        string value = "";
+
+        // Execute the command making sure the connection gets closed in the end
+        try {
+            // Open the connection of the command
+            command.Connection.Open();
+
+            // Execute the command and get the number of affected rows
+            value = command.ExecuteScalar().ToString();
+        } catch (Exception ex) {
+            // Log eventual errors and rethrow them
+            // Utilities.LogError(ex);
+            throw;
+        } finally {
+            // Close the connection
+            command.Connection.Close();
+        }
+        // Return the result
+        return value;
+    }
 }
