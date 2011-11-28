@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Item.aspx.cs" Inherits="Item" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <p>
         <asp:Label CssClass="CatalogTitle" ID="lblTitle" runat="server" Text="Title"></asp:Label>
     </p>
@@ -15,5 +15,8 @@
     <p>
         <b>Price:</b>
         <asp:Label CssClass="ProductPrice" ID="lblPrice" runat="server" Text="$0.00"></asp:Label>
+    </p>
+    <p>
+        <asp:LinkButton ID="btnAddToCart" runat="server" OnClick="btnAddToCart_Click">Add to Cart</asp:LinkButton>
     </p>
 </asp:Content>

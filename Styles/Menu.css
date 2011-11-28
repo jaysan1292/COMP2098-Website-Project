@@ -110,28 +110,6 @@
 #navbar #menu li#nav-account a.on {
     background-position: -240px -117px;
 }
-#content-left {
-    float: left; /*background-color:Aqua;*/
-    width: 30%;
-}
-#content-right {
-    float: right; /*background-color:Orange;*/
-    width: 70%;
-}
-#itemcontainer {
-    height: 110px;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-}
-#itemimage {
-    float: left;
-    width: 110px;
-}
-#iteminfo {
-    float: right;
-    width: 590px;
-}
 
 /*SUBMENU*/
 #nav-category #submenu-category {

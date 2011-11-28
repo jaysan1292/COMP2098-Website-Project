@@ -65,4 +65,11 @@ public class JDwebstoreConfig {
             return dbProviderName;
         }
     }
+
+    // Returns the number of days for shopping cart expiration
+    public static int CartPersistDays {
+        get {
+            return int.Parse(ConfigurationManager.AppSettings["CartPersistDays"]);
+        }
+    }
 }

@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="ItemManager.aspx.cs" Inherits="Manage_ItemManager" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <script src="Scripts/jquery-1.7.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
     <script src="Scripts/menuanimation.js" type="text/javascript"></script>
     <script src="Scripts/itemmanager.js" type="text/javascript"></script>
     <link href="Styles/ItemManager.css" rel="stylesheet" type="text/css" />

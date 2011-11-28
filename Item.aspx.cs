@@ -10,6 +10,11 @@ public partial class Item : System.Web.UI.Page {
         // Retrieve ItemID from the query string
         string itemId = Request.QueryString["ItemID"];
 
+        // redirect to homepage if ItemID is null
+        if (itemId == null) {
+            Response.Redirect("Default.aspx");
+        }
+
         // Retrieves item details
         ItemDetails det = CatalogAccess.GetItemDetails(itemId);
 
@@ -29,5 +34,17 @@ public partial class Item : System.Web.UI.Page {
 
         // Set the title of the page
         this.Title = JDwebstoreConfig.SiteName + " - " + det.Name;
+    }
+    protected void btnAddToCart_Click(object sender, EventArgs e) {
+        // Retrieve ItemID from the query string
+        string itemId = Request.QueryString["ItemID"];
+
+        string options = "";
+        // Retrive the selected product options
+        // TODO: Determine if this block of code is necessary;
+        // PDF pg399; Textbook pg384
+
+        // Add the product to the shopping cart
+        ShoppingCartAccess.AddItem(itemId, options);
     }
 }
