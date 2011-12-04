@@ -2,27 +2,34 @@
 <div id="account-sidebar-wrapper">
     <div id="account-sidebar">
         <div id="account-header">
-            Welcome, [name]!
+            Cart Summary
         </div>
-        <span style="color: #CFCFCF; font-style: italic;">TODO: Pull customer's shopping cart information from database and put it here. i.e, show running total, number of items in cart, link to shopping cart</span>
+        <asp:Label ID="lblCartTotal" runat="server" Text="Label"></asp:Label></span><br />
+        <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart.aspx">View Cart</asp:HyperLink>
         <hr />
-        <span style="color: #CFCFCF; font-style: italic;">If user is not logged in, display this:<br />
-        </span>You are not logged in.<br />
-        <a href="javascript:;" onclick="showDialog('#login-window')">Log in</a>
-        <br />
-        or<br />
-        <a href="javascript:;" onclick="showDialog('#signup-window')">Sign up</a>
+        <asp:LoginView ID="LoginView1" runat="server">
+            <AnonymousTemplate>
+                You are not logged in.<br />
+                <a href="javascript:;" onclick="showDialog('#login-window')">Log in</a> or <a href="<%=Request.ApplicationPath%>/Register.aspx">Sign up</a>.</div>
+                <div id="signup-window" class="dialog">
+                    Sign up for a new account:
+                    <div class="dialog-inner-panel">
+                        <%--This is an inner panel. (The form would go here.)--%>
+                    </div>
+                </div>
+                <div id="login-window" class="dialog">
+                    Log in to your account:
+                    <div class="dialog-inner-panel">
+                        <asp:Login ID="Login1" runat="server" TitleText="" UserNameLabelText="Username:">
+                        </asp:Login>
+                    </div>
+                </div>
+            </AnonymousTemplate>
+            <LoggedInTemplate>
+                <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
+                </div>
+            </LoggedInTemplate>
+        </asp:LoginView>
     </div>
-</div>
-<div id="signup-window" class="dialog">
-    This is the signup window.
-    <div class="dialog-inner-panel">
-        This is an inner panel. (The form would go here.)</div>
-</div>
-<div id="login-window" class="dialog">
-    This is the login window.
-    <div class="dialog-inner-panel">
-        This is an inner panel. (The form would go here.)</div>
-</div>
-<div id="fade" onclick="hideDialog()">
-</div>
+    <div id="fade" onclick="hideDialog()">
+    </div>

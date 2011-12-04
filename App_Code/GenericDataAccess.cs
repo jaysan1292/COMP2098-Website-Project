@@ -76,7 +76,8 @@ public class GenericDataAccess {
             affectedRows = command.ExecuteNonQuery();
         } catch (Exception ex) {
             // Log eventual errors and rethrow them
-            // Utilities.LogError(ex);
+            ErrorLogger error = new ErrorLogger();
+            error.ErrorLog(HttpContext.Current.Server.MapPath("Logs/ExecuteNonQueryErrorLog.txt"), ex.Message);
             throw;
         } finally {
             // Close the connection
@@ -99,7 +100,8 @@ public class GenericDataAccess {
             value = command.ExecuteScalar().ToString();
         } catch (Exception ex) {
             // Log eventual errors and rethrow them
-            // Utilities.LogError(ex);
+            ErrorLogger error = new ErrorLogger();
+            error.ErrorLog(HttpContext.Current.Server.MapPath("Logs/ExecuteScalarErrorLog.txt"), ex.Message);
             throw;
         } finally {
             // Close the connection

@@ -10,5 +10,13 @@ public partial class Category : System.Web.UI.Page {
         Main Master = (Main)Page.Master;
         Master.SetCurrentPage("Category");
     }
-    protected void Page_Load(object sender, EventArgs e) { }
+    protected void Page_Load(object sender, EventArgs e) {
+        // Retrieve ItemID from the query string
+        string categoryId = Request.QueryString["CategoryID"];
+
+        // redirect to homepage if ItemID is null
+        if (categoryId == null) {
+            Response.Redirect("Default.aspx");
+        }
+    }
 }

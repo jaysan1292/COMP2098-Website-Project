@@ -1,0 +1,9 @@
+CONNECTING SHOPPING CART WITH USER ACCOUNTS
+
+Add a column in the Users table with name CartID
+create a relationship with the ShoppingCart table on CartID column in ShoppingCart and Users
+
+when user creates account, check the cookie if there is a CartID already stored
+if there is, connect that shopping cart with that user
+in other words,
+if there is a CartID already in the cookie, set it to the CartID value of the currently logged in User, but if there is already a value for CartID for the currently logged in user, do not overwrite the value.

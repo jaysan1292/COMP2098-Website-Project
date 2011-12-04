@@ -96,7 +96,7 @@
 #navbar #menu li#nav-category a:active, #navbar #menu li#nav-category a.active {
     background-position: -120px -78px;
 }
-#navbar #menu li#nav-account a:active {
+#navbar #menu li#nav-account a:active, #navbar #menu li#nav-account a.active{
     background-position: -240px -78px;
 }
 
@@ -112,19 +112,26 @@
 }
 
 /*SUBMENU*/
-#nav-category #submenu-category {
-    width: 225px;
+.submenu{
     display: none;
     border: 1px solid #CCC;
     z-index: 9001;
     position: absolute;
-    top: 38px;
-    left: 120px;
     box-shadow: 0 4px 7px #323232;
     float: right;
     background: #FCFCFC;
 }
-#nav-category #submenu-category .submenu-item a {
+#submenu-category {
+    top: 38px;
+    left: 120px;
+    width: 225px;
+}
+#submenu-account{
+    top:38px;
+    left:240px;
+    width:225px;
+}
+#nav-category #submenu-category .submenu-item a, #nav-account #submenu-account .submenu-item a {
     text-decoration: none;
     display: inline;
     padding: 2px 12px;
@@ -135,7 +142,7 @@
     position: relative;
     left: -40px;
 }
-#nav-category #submenu-category .submenu-item a:hover {
+#nav-category #submenu-category .submenu-item a:hover, #nav-account #submenu-account .submenu-item a:hover {
     color: #0085CF;
     background-color: #D6E5F2;
     text-decoration: none;

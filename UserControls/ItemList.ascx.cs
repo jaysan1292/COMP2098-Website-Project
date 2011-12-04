@@ -7,7 +7,9 @@ using System.Web.UI.WebControls;
 
 public partial class UserControls_ItemList : System.Web.UI.UserControl {
     protected void Page_Load(object sender, EventArgs e) {
-        PopulateControls();
+        if(!IsPostBack){
+            PopulateControls();
+        }
     }
 
     private void PopulateControls() {

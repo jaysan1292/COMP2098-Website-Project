@@ -1,9 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Item.aspx.cs" Inherits="Item" %>
 
+<%@ Register src="UserControls/AccountSidebar.ascx" tagname="AccountSidebar" tagprefix="uc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <p>
+<div id="content-left"><uc1:AccountSidebar ID="AccountSidebar1" runat="server" />
+    </div>
+<div id="content-right"><p>
         <asp:Label CssClass="CatalogTitle" ID="lblTitle" runat="server" Text="Title"></asp:Label>
     </p>
     <p>
@@ -18,5 +22,6 @@
     </p>
     <p>
         <asp:LinkButton ID="btnAddToCart" runat="server" OnClick="btnAddToCart_Click">Add to Cart</asp:LinkButton>
-    </p>
+    </p></div>
+    
 </asp:Content>

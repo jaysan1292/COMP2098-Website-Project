@@ -13,8 +13,9 @@ public partial class Cart : System.Web.UI.Page {
     }
     protected void Page_Load(object sender, EventArgs e) {
         // Populate the control only on the initial page load
-        if (!IsPostBack)
+        if (!IsPostBack) {
             PopulateControls();
+        }
     }
 
     // fill shopping cart controls with data
@@ -28,10 +29,12 @@ public partial class Cart : System.Web.UI.Page {
             grid.Visible = false;
             btnUpdate.Enabled = false;
             lblTotalAmount.Text = String.Format("{0:c}", 0);
-        } else { // if the shopping cart is not empty
+        } else { 
+            // if the shopping cart is not empty
             // populate the list with the shopping cart contents
             grid.DataSource = dt;
             grid.DataBind();
+
 
             // set up controls
             lblMessage.Text = "Items in your cart:";
@@ -96,9 +99,7 @@ public partial class Cart : System.Web.UI.Page {
             if (Int32.TryParse(quantityTextBox.Text, out quantity)) {
                 // Update product quantity
                 success = success && ShoppingCartAccess.UpdateItem(itemId, quantity);
-            } 
-            else
-            {
+            } else {
                 // if TryParse didn't succeed
                 success = false;
             }

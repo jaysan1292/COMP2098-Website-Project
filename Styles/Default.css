@@ -21,7 +21,7 @@ hr {
     position: relative;
 }
 #content-left {
-    float: left; 
+    float: left;
     width: 30%;
 }
 #content-right {
@@ -139,6 +139,15 @@ hr {
     text-shadow: 1px 1px 1px #224272;
 }
 #signup-window {
+    width: 302px;
+    height: 280px;
+    margin-left: -151px;
+    margin-top: -140px;
 }
 #login-window {
+    text-align:center;
+    width: 246px;
+    height: 130px;
+    margin-left: -123px;
+    margin-top: -65px;
 }

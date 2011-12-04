@@ -25,6 +25,21 @@ $(document).ready(function () {
 });
 // End category dropdown menu handler
 
+// Account dropdown menu handler
+$(document).ready(function () {
+    $("#nav-account").hover(
+            function () {
+                $('#submenu-account', this).slideDown(250, 'easeInOutCubic');
+                $('a', this).addClass('active');
+            },
+            function () {
+                $('#submenu-account', this).slideUp(150, 'easeInOutCubic');
+                $('a', this).removeClass('active');
+            }
+        );
+});
+// End account dropdown menu handler
+
 // Account Sidebar floating div
 $(document).ready(function () {
     var top = $('#account-sidebar').offset().top - parseFloat($('#account-sidebar').css('margin-top').replace(/auto/, 0));
