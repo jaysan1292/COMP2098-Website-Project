@@ -46,5 +46,6 @@ public partial class Item : System.Web.UI.Page {
 
         // Add the product to the shopping cart
         ShoppingCartAccess.AddItem(itemId, options);
+        Response.Redirect(Request.Url.ToString());
     }
 }

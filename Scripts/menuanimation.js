@@ -8,8 +8,6 @@ var endHeight = new Array();
 var moving = new Array();
 var dir = new Array();
 
-var totalDivs = new Array();
-
 function slideDown(objname) {
     if (moving[objname])
         return;
@@ -57,7 +55,7 @@ function slideTick(objname) {
     else {
         //var d = Math.round((elapsed / slideAniLen) * endHeight[objname]);
         var d = 0;
-        if(Math.round(Math.pow(elapsed / slideAniLen,2) * endHeight[objname]) >= endHeight[objname] / 2)
+        if (Math.round(Math.pow(elapsed / slideAniLen, 2) * endHeight[objname]) >= endHeight[objname] / 2)
             d = Math.round(Math.pow(elapsed / slideAniLen, 0.5) * endHeight[objname]);
         else
             d = Math.round(Math.pow(elapsed / slideAniLen, 2) * endHeight[objname]);
@@ -98,7 +96,7 @@ function toggleSlide(objname) {
 
 function hideAll() {
     // specific for item management section only
-    for (i = 1; document.getElementById(i) != null; i++) {
-        slideUp(String(i));
-    }
+    $('.iteminfo').each(function () {
+        slideUp($(this).attr("id"));
+    });
 }

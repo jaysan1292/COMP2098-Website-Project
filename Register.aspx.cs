@@ -12,4 +12,7 @@ public partial class Register : System.Web.UI.Page
     {
         this.Title = JDwebstoreConfig.SiteName + " - Register";
     }
+    protected void CreateUserWizard1_ContinueButtonClick(object sender, EventArgs e) {
+        Response.Redirect("~/Default.aspx");
+    }
 }

@@ -5,11 +5,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text;
 
 public partial class Cart : System.Web.UI.Page {
     protected void Page_Init(object sender, EventArgs e) {
-        Main Master = (Main)Page.Master;
-        Master.SetCurrentPage("Account");
+        //Main Master = (Main)Page.Master;
+        //Master.SetCurrentPage("Account");
     }
     protected void Page_Load(object sender, EventArgs e) {
         // Populate the control only on the initial page load
@@ -29,7 +30,7 @@ public partial class Cart : System.Web.UI.Page {
             grid.Visible = false;
             btnUpdate.Enabled = false;
             lblTotalAmount.Text = String.Format("{0:c}", 0);
-        } else { 
+        } else {
             // if the shopping cart is not empty
             // populate the list with the shopping cart contents
             grid.DataSource = dt;
@@ -63,6 +64,8 @@ public partial class Cart : System.Web.UI.Page {
 
         // Repopulate the control
         PopulateControls();
+
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowDialog", "showMessage()", true);
     }
 
     // update shopping cart item quantities
@@ -109,5 +112,7 @@ public partial class Cart : System.Web.UI.Page {
         }
         // Repopulate the control
         PopulateControls();
+
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowDialog", "showMessage()", true);
     }
 }

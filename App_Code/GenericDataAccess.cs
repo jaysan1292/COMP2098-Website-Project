@@ -77,7 +77,7 @@ public class GenericDataAccess {
         } catch (Exception ex) {
             // Log eventual errors and rethrow them
             ErrorLogger error = new ErrorLogger();
-            error.ErrorLog(HttpContext.Current.Server.MapPath("Logs/ExecuteNonQueryErrorLog.txt"), ex.Message);
+            error.ErrorLog(HttpContext.Current.Server.MapPath("Logs/ExecuteNonQueryErrorLog"), ex.Message);
             throw;
         } finally {
             // Close the connection

@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="ResultsList.ascx.cs" Inherits="UserControls_ResultsList" %>
 <%@ Register Src="Pager.ascx" TagName="Pager" TagPrefix="uc1" %>
+<asp:Label ID="lblStatus" runat="server" Visible="False"></asp:Label>
 <uc1:Pager ID="PagerTop" runat="server" Visible="False" />
 <asp:DataList ID="lstResults" runat="server">
     <ItemTemplate>

@@ -237,6 +237,159 @@ public class CatalogAccess {
 
         return table;
     }
+
+    // Create a new item
+    public static bool AddItem(string name, string price, string description, string keywords, string image, string thumbnail, string categoryId, string onFront, string onSlides) {
+        DbCommand comm = GenericDataAccess.CreateCommand();
+
+        comm.CommandText = "JDwebstore-CatalogAddItem";
+
+        DbParameter param = comm.CreateParameter();
+        param.ParameterName = "@Name";
+        param.Value = name;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@Description";
+        param.Value = description;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@Price";
+        param.Value = price;
+        param.DbType = DbType.Decimal;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@Keywords";
+        param.Value = keywords;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@Image";
+        param.Value = image;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@Thumbnail";
+        param.Value = thumbnail;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@CategoryID";
+        param.Value = categoryId;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@OnFront";
+        param.Value = onFront;
+        param.DbType = DbType.Boolean;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@OnSlides";
+        param.Value = onSlides;
+        param.DbType = DbType.Boolean;
+        comm.Parameters.Add(param);
+
+        int result = -1;
+
+        try {
+            result = GenericDataAccess.ExecuteNonQuery(comm);
+        } catch {
+
+        }
+        return (result >= 1);
+    }
+
+    // Updates the specified item
+    public static bool UpdateItem(string itemId, string name, string price, string description, string keywords, string categoryId, string onFront, string onSlides) {
+        DbCommand comm = GenericDataAccess.CreateCommand();
+
+        comm.CommandText = "JDwebstore-CatalogUpdateItem";
+
+        DbParameter param = comm.CreateParameter();
+        param.ParameterName = "@ItemID";
+        param.Value = itemId;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@Name";
+        param.Value = name;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@Price";
+        param.Value = price;
+        param.DbType = DbType.Decimal;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@Description";
+        param.Value = description;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@OnFront";
+        param.Value = onFront;
+        param.DbType = DbType.Boolean;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@OnSlides";
+        param.Value = onSlides;
+        param.DbType = DbType.Boolean;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@Keywords";
+        param.Value = keywords;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@CategoryID";
+        param.Value = categoryId;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        int result = -1;
+
+        try {
+            result = GenericDataAccess.ExecuteNonQuery(comm);
+        } catch { }
+        return (result >= 1);
+
+    }
+    // Delete an item
+    public static bool DeleteItem(string itemId) {
+        DbCommand comm = GenericDataAccess.CreateCommand();
+
+        comm.CommandText = "JDwebstore-CatalogDeleteItem";
+
+        DbParameter param = comm.CreateParameter();
+        param.ParameterName = "@ItemID";
+        param.Value = itemId;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        int result = -1;
+
+        try {
+            result = GenericDataAccess.ExecuteNonQuery(comm);
+        } catch { }
+
+        return (result != -1);
+    }
 }
 
 public struct CategoryDetails {

@@ -145,9 +145,71 @@ hr {
     margin-top: -140px;
 }
 #login-window {
-    text-align:center;
+    text-align: center;
     width: 246px;
     height: 130px;
     margin-left: -123px;
     margin-top: -65px;
+}
+.login {
+    margin-bottom: 10px;
+}
+.login table tr td a {
+    background-color: #224272;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid #224272;
+    font-size: 12pt;
+    position: relative;
+    top: 4px;
+    right: 6px;
+}
+.login table tr td a:hover, .login table tr td a:focus {
+    background-color: #0085CF;
+    border-color: #0085CF;
+}
+.register {
+    position: relative;
+    left: 50%;
+    margin-left: -155px;
+    width: 310px;
+    text-align: left;
+}
+.register .reg-header {
+    font-weight: bold;
+    font-size: 2em;
+    text-align: left;
+}
+.register a {
+    background-color: #224272;
+    border: 1px solid #224272;
+    font-size: 12pt;
+    position: relative;
+    top: 4px;
+    right: 6px;
+}
+.register a:hover, .register a:focus {
+    background-color: #0085CF;
+    border-color: #0085CF;
+}
+.lnkCart {
+    background-color: #039909;
+    border: 1px solid #039909;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.lnkCart:hover {
+}
+
+.button {
+    background-image: url(../Images/button_colors.png);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+    text-decoration: none;
+    padding-left: 15px;
+    padding-right: 15px;
 }

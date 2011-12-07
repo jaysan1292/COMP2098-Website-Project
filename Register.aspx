@@ -1,31 +1,20 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Blank.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Register" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Register" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style type="text/css">
-        .register {
-            position: relative;
-            left: 50%;
-            margin-left: -155px;
-            width: 310px;
-            text-align: left;
-        }
-        .register .reg-header {
-            font-weight: bold;
-            font-size:2em;
-            text-align:left;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" CssClass="register">
+    <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" CssClass="register" CreateUserButtonType="Link" ContinueButtonType="Link" oncontinuebuttonclick="CreateUserWizard1_ContinueButtonClick">
+        <ContinueButtonStyle CssClass="button" />
+        <CreateUserButtonStyle CssClass="button" />
         <TitleTextStyle CssClass="reg-header" />
         <WizardSteps>
-            <asp:CreateUserWizardStep runat="server" Title="Create a new account." >
+            <asp:CreateUserWizardStep runat="server" Title="Create a new account.">
                 <ContentTemplate>
-                    <table style="font-size:100%;">
+                    <table style="font-size: 100%;">
                         <tr>
                             <td align="center" class="reg-header" colspan="2">
-                                Create a new account.<hr /></td>
+                                Create a new account.<hr />
+                            </td>
                         </tr>
                         <tr>
                             <td align="right">
@@ -69,16 +58,15 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="center" colspan="2" style="color:Red;">
+                            <td align="center" colspan="2" style="color: Red;">
                                 <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
                             </td>
                         </tr>
                     </table>
                 </ContentTemplate>
             </asp:CreateUserWizardStep>
-            <asp:WizardStep runat="server" Title="Enter your name and address.">
-            </asp:WizardStep>
             <asp:CompleteWizardStep runat="server" Title="You're done!" />
         </WizardSteps>
+        <FinishCompleteButtonStyle CssClass="button" />
     </asp:CreateUserWizard>
 </asp:Content>

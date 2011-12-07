@@ -1,11 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="AccountSidebar.ascx.cs" Inherits="UserControls_AccountSidebar" %>
+<%@ Register Src="LoginDialog.ascx" TagName="LoginDialog" TagPrefix="uc1" %>
+
 <div id="account-sidebar-wrapper">
     <div id="account-sidebar">
         <div id="account-header">
-            Cart Summary
+            <asp:Label ID="lblUsername" runat="server"></asp:Label>
         </div>
         <asp:Label ID="lblCartTotal" runat="server" Text="Label"></asp:Label></span><br />
-        <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart.aspx">View Cart</asp:HyperLink>
+        <asp:HyperLink ID="lnkCart" runat="server" NavigateUrl="~/Cart.aspx" CssClass="lnkCart button">View Cart</asp:HyperLink>
         <hr />
         <asp:LoginView ID="LoginView1" runat="server">
             <AnonymousTemplate>
@@ -17,19 +19,11 @@
                         <%--This is an inner panel. (The form would go here.)--%>
                     </div>
                 </div>
-                <div id="login-window" class="dialog">
-                    Log in to your account:
-                    <div class="dialog-inner-panel">
-                        <asp:Login ID="Login1" runat="server" TitleText="" UserNameLabelText="Username:">
-                        </asp:Login>
-                    </div>
-                </div>
+                <uc1:LoginDialog ID="LoginDialog1" runat="server" />
             </AnonymousTemplate>
             <LoggedInTemplate>
                 <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">Logout</asp:LinkButton>
                 </div>
             </LoggedInTemplate>
         </asp:LoginView>
-    </div>
-    <div id="fade" onclick="hideDialog()">
     </div>

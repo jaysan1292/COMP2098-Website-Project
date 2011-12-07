@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="Pager.ascx.cs" Inherits="UserControls_Pager" %>
-<p>
+<p class="pager">
     Page
     <asp:Label ID="lblCurrentPage" runat="server" />
     of

@@ -30,7 +30,10 @@ public partial class UserControls_ResultsList : System.Web.UI.UserControl {
         // Perform search
         lstResults.DataSource = CatalogAccess.SearchCatalog(query, page, out totalPages);
         lstResults.DataBind();
-
+        if (!lstResults.HasControls()) {
+            lblStatus.Visible = true;
+            lblStatus.Text = "No results found.";
+        }
         // Display pager
         firstPageUrl = Link.ToSearch(query, "1");
         pagerFormat = Link.ToSearch(query, "{0}");
